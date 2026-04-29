@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Numbers — Learning Thai with Saimai</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&family=Space+Grotesk:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../styles.css" />
+    <script>
+      (function () {
+        try {
+          var t = localStorage.getItem('thai-theme');
+          if (t === 'dark') document.documentElement.setAttribute('data-theme', 'dark');
+        } catch (e) {}
+      })();
+    </script>
+  </head>
+  <body>
+    <div class="aurora aurora-1"></div>
+    <div class="aurora aurora-2"></div>
+
+    <header class="hero hero-compact" id="top">
+      <nav class="nav">
+        <div class="brand"><a href="../index.html" class="brand-link">Learning Thai with Saimai</a></div>
+        <div class="nav-actions">
+          <a class="cta-small" href="alphabet.html">Alphabet</a>
+          <a class="cta-small active" href="numbers.html">Numbers</a>
+          <a class="cta-small" href="vocabulary.html">Vocabulary</a>
+          <a class="cta-small" href="phrases.html">Phrases</a>
+          <a class="cta-small" href="about.html">About</a>
+          <button class="theme-toggle" type="button" aria-label="Toggle dark mode">🌙</button>
+        </div>
+      </nav>
+
+      <div class="hero-content">
+        <p class="kicker">MODULE 02</p>
+        <h1>Numbers</h1>
+        <p class="subtitle">
+          Build confidence with daily numbers for money, time, and shopping.
+        </p>
+      </div>
+    </header>
+
+    <main>
+      <section class="section">
+        <div class="grid modules-grid">
+          <article class="card glow-pink">
+            <h3>1 – 10</h3>
+            <ul>
+              <li>1 - หนึ่ง (neung)</li>
+              <li>2 - สอง (song)</li>
+              <li>3 - สาม (saam)</li>
+              <li>4 - สี่ (sii)</li>
+              <li>5 - ห้า (haa)</li>
+              <li>6 - หก (hok)</li>
+              <li>7 - เจ็ด (jet)</li>
+              <li>8 - แปด (paet)</li>
+              <li>9 - เก้า (gao)</li>
+              <li>10 - สิบ (sip)</li>
+            </ul>
+          </article>
+
+          <article class="card glow-cyan">
+            <h3>Tens & Hundreds</h3>
+            <ul>
+              <li>20 - ยี่สิบ (yii-sip)</li>
+              <li>30 - สามสิบ (saam-sip)</li>
+              <li>100 - ร้อย (roi)</li>
+              <li>1000 - พัน (phan)</li>
+            </ul>
+          </article>
+
+          <article class="card glow-lime">
+            <h3>Practice</h3>
+            <p>Click to hear:</p>
+            <button class="speak-btn" data-phrase="หนึ่ง สอง สาม">หนึ่ง สอง สาม</button>
+            <button class="speak-btn" data-phrase="ห้าสิบบาท">ห้าสิบบาท (50 baht)</button>
+            <button class="speak-btn" data-phrase="หนึ่งร้อย">หนึ่งร้อย (100)</button>
+          </article>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <p>Designed for joyful Thai learning. Keep practicing daily with Saimai.</p>
+      <a href="#top">Back to top</a>
+    </footer>
+
+    <script src="../script.js"></script>
+  </body>
+</html>

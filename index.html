@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Learning Thai with Saimai</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&family=Space+Grotesk:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+    <script>
+      // Apply saved theme before paint to avoid flash
+      (function () {
+        try {
+          var t = localStorage.getItem('thai-theme');
+          if (t === 'dark') document.documentElement.setAttribute('data-theme', 'dark');
+        } catch (e) {}
+      })();
+    </script>
+  </head>
+  <body>
+    <div class="aurora aurora-1"></div>
+    <div class="aurora aurora-2"></div>
+
+    <header class="hero" id="top">
+      <nav class="nav">
+        <div class="brand"><a href="index.html" class="brand-link">Learning Thai with Saimai</a></div>
+        <div class="nav-actions">
+          <a class="cta-small" href="pages/alphabet.html">Alphabet</a>
+          <a class="cta-small" href="pages/numbers.html">Numbers</a>
+          <a class="cta-small" href="pages/vocabulary.html">Vocabulary</a>
+          <a class="cta-small" href="pages/phrases.html">Phrases</a>
+          <a class="cta-small" href="pages/about.html">About</a>
+          <button class="theme-toggle" type="button" aria-label="Toggle dark mode">🌙</button>
+        </div>
+      </nav>
+
+      <div class="hero-content">
+        <p class="kicker">NEON LANGUAGE LAB</p>
+        <h1>Learning Thai with Saimai</h1>
+        <p class="subtitle">
+          A vibrant journey into Thai: master the alphabet, numbers, useful words,
+          vocabulary sets, and real phrases you can speak today.
+        </p>
+        <div class="hero-actions">
+          <a href="#modules" class="btn btn-primary">Explore Modules</a>
+          <a href="pages/phrases.html" class="btn btn-secondary">Practice Phrases</a>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <section class="section" id="modules">
+        <h2>Core Learning Sections</h2>
+        <p class="section-lead">
+          Pick a module to dive in. Each one opens its own focused page.
+        </p>
+
+        <div class="grid modules-grid">
+          <article class="card glow-cyan">
+            <h3>Thai Alphabet</h3>
+            <p>Learn core consonants and vowels to start reading Thai signs and words.</p>
+            <ul>
+              <li>ก — <strong>g</strong> sound</li>
+              <li>ข — <strong>kh</strong> sound</li>
+              <li>จ — <strong>j</strong> sound</li>
+              <li>-า — long <strong>aa</strong> vowel</li>
+            </ul>
+            <a class="module-link" href="pages/alphabet.html">Open Alphabet Lab →</a>
+          </article>
+
+          <article class="card glow-pink">
+            <h3>Numbers</h3>
+            <p>Build confidence with daily numbers for money, time, and shopping.</p>
+            <ul>
+              <li>1 - หนึ่ง (neung)</li>
+              <li>2 - สอง (song)</li>
+              <li>5 - ห้า (ha)</li>
+              <li>10 - สิบ (sip)</li>
+            </ul>
+            <a class="module-link" href="pages/numbers.html">Open Numbers →</a>
+          </article>
+
+          <article class="card glow-lime">
+            <h3>Vocabulary</h3>
+            <p>Themed word groups: food, travel, family, and more.</p>
+            <ul>
+              <li>Hello - สวัสดี (sawatdee)</li>
+              <li>Thank you - ขอบคุณ (khop khun)</li>
+              <li>Yes - ใช่ (chai)</li>
+              <li>No - ไม่ (mai)</li>
+            </ul>
+            <a class="module-link" href="pages/vocabulary.html">Open Vocabulary →</a>
+          </article>
+
+          <article class="card glow-cyan">
+            <h3>Phrases</h3>
+            <p>Useful patterns you can speak today — introductions, prices, ordering.</p>
+            <ul>
+              <li>ฉันชื่อ... (chan cheu...)</li>
+              <li>อันนี้เท่าไหร่ (an nee tao rai?)</li>
+              <li>ขอ...หนึ่งที่ (kho... neung tee)</li>
+            </ul>
+            <a class="module-link" href="pages/phrases.html">Open Phrases →</a>
+          </article>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <p>Designed for joyful Thai learning. Keep practicing daily with Saimai.</p>
+      <a href="#top">Back to top</a>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>

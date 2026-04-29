@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>About Saimai — Learning Thai with Saimai</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&family=Space+Grotesk:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../styles.css" />
+    <script>
+      (function () {
+        try {
+          var t = localStorage.getItem('thai-theme');
+          if (t === 'dark') document.documentElement.setAttribute('data-theme', 'dark');
+        } catch (e) {}
+      })();
+    </script>
+  </head>
+  <body>
+    <div class="aurora aurora-1"></div>
+    <div class="aurora aurora-2"></div>
+
+    <header class="hero hero-compact" id="top">
+      <nav class="nav">
+        <div class="brand"><a href="../index.html" class="brand-link">Learning Thai with Saimai</a></div>
+        <div class="nav-actions">
+          <a class="cta-small" href="alphabet.html">Alphabet</a>
+          <a class="cta-small" href="numbers.html">Numbers</a>
+          <a class="cta-small" href="vocabulary.html">Vocabulary</a>
+          <a class="cta-small" href="phrases.html">Phrases</a>
+          <a class="cta-small active" href="about.html">About</a>
+          <button class="theme-toggle" type="button" aria-label="Toggle dark mode">🌙</button>
+        </div>
+      </nav>
+
+      <div class="hero-content">
+        <p class="kicker">ABOUT</p>
+        <h1>Meet Saimai</h1>
+        <p class="subtitle">
+          The story behind this little corner of the internet — and why it exists.
+        </p>
+      </div>
+    </header>
+
+    <main>
+      <section class="section about-section">
+        <div class="about-layout">
+          <article class="card about-card">
+            <h2>สวัสดีค่ะ — Hi, I'm Saimai</h2>
+            <p>
+              I was born and raised in Thailand, and I've spent years watching friends
+              from all over the world try to learn my language. Most of them gave up.
+              Not because Thai is too hard — but because the resources they found
+              taught them how to <em>order pad thai</em> and <em>haggle at a market</em>,
+              and very little else.
+            </p>
+
+            <p>
+              Tourist phrases are useful for a week. They don't help you read a
+              street sign, understand a menu without pictures, write a friend a
+              message, or hold a real conversation. To do those things you need
+              the <strong>alphabet</strong>, the <strong>vowels</strong>, the
+              <strong>tones</strong>, and the <strong>everyday vocabulary</strong>
+              that locals actually use.
+            </p>
+
+            <p>
+              When I went looking for a single, free, well-organized resource
+              that taught Thai <em>properly</em> — and not behind a paywall — I
+              couldn't find one. So I decided to build it myself.
+            </p>
+
+            <h3>What this site is</h3>
+            <ul>
+              <li>Free, forever. No accounts, no upsells, no paywalls.</li>
+              <li>Focused on the foundations: alphabet, vowels, numbers, real vocabulary, useful phrases.</li>
+              <li>Designed for foreigners — every Thai letter shows the closest English sound and how Thais say its name (e.g. <strong>ก = g, "gaw"</strong>).</li>
+              <li>Practical. If you finish these modules, you'll be able to read signs, sound out new words, and start real conversations.</li>
+            </ul>
+
+            <h3>Why it matters to me</h3>
+            <p>
+              Thai is a beautiful, musical language with a rich script. I want
+              more people to feel the joy of reading their first Thai sentence
+              out loud — and not feel locked out by tone marks or by an alphabet
+              that <em>looks</em> intimidating but really isn't, once someone
+              shows you the pattern.
+            </p>
+
+            <p class="signature">
+              Thanks for stopping by. Take your time, practice a little every day,
+              and don't worry about being perfect.
+              <br />
+              <strong>— Saimai</strong>
+            </p>
+          </article>
+
+          <aside class="about-gallery">
+            <figure class="about-photo about-photo-main">
+              <img src="../img/IMG_20191222_151044.jpg" alt="Saimai" loading="lazy" />
+            </figure>
+            <figure class="about-photo">
+              <img src="../img/IMG_20191229_142039.jpg" alt="Saimai" loading="lazy" />
+            </figure>
+            <figure class="about-photo">
+              <img src="../img/IMG_20191227_193954.jpg" alt="Saimai" loading="lazy" />
+            </figure>
+            <figure class="about-photo">
+              <img src="../img/IMG_20191229_160144.jpg" alt="Saimai" loading="lazy" />
+            </figure>
+            <figure class="about-photo">
+              <img src="../img/IMG_20191230_173332.jpg" alt="Saimai" loading="lazy" />
+            </figure>
+          </aside>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <p>Designed for joyful Thai learning. Keep practicing daily with Saimai.</p>
+      <a href="#top">Back to top</a>
+    </footer>
+
+    <script src="../script.js"></script>
+  </body>
+</html>

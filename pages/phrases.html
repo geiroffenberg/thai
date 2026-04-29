@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Phrases — Learning Thai with Saimai</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&family=Space+Grotesk:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../styles.css" />
+    <script>
+      (function () {
+        try {
+          var t = localStorage.getItem('thai-theme');
+          if (t === 'dark') document.documentElement.setAttribute('data-theme', 'dark');
+        } catch (e) {}
+      })();
+    </script>
+  </head>
+  <body>
+    <div class="aurora aurora-1"></div>
+    <div class="aurora aurora-2"></div>
+
+    <header class="hero hero-compact" id="top">
+      <nav class="nav">
+        <div class="brand"><a href="../index.html" class="brand-link">Learning Thai with Saimai</a></div>
+        <div class="nav-actions">
+          <a class="cta-small" href="alphabet.html">Alphabet</a>
+          <a class="cta-small" href="numbers.html">Numbers</a>
+          <a class="cta-small" href="vocabulary.html">Vocabulary</a>
+          <a class="cta-small active" href="phrases.html">Phrases</a>
+          <a class="cta-small" href="about.html">About</a>
+          <button class="theme-toggle" type="button" aria-label="Toggle dark mode">🌙</button>
+        </div>
+      </nav>
+
+      <div class="hero-content">
+        <p class="kicker">MODULE 04</p>
+        <h1>How To Speak Phrases</h1>
+        <p class="subtitle">Use these common phrase patterns and swap in your own words.</p>
+      </div>
+    </header>
+
+    <main>
+      <section class="section">
+        <div class="grid phrase-grid">
+          <article class="card phrase-card">
+            <h3>Introducing Yourself</h3>
+            <p><strong>ฉันชื่อ...</strong> (chan cheu...) - My name is...</p>
+            <button class="speak-btn" data-phrase="ฉันชื่อ">Hear it</button>
+          </article>
+
+          <article class="card phrase-card">
+            <h3>Asking Price</h3>
+            <p><strong>อันนี้เท่าไหร่</strong> (an nee tao rai?) - How much is this?</p>
+            <button class="speak-btn" data-phrase="อันนี้เท่าไหร่">Hear it</button>
+          </article>
+
+          <article class="card phrase-card">
+            <h3>Ordering Food</h3>
+            <p><strong>ขอ...หนึ่งที่</strong> (kho... neung tee) - I would like one...</p>
+            <button class="speak-btn" data-phrase="ขอหนึ่งที่">Hear it</button>
+          </article>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <p>Designed for joyful Thai learning. Keep practicing daily with Saimai.</p>
+      <a href="#top">Back to top</a>
+    </footer>
+
+    <script src="../script.js"></script>
+  </body>
+</html>
