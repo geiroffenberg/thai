@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Word Building — Learning Thai with Saimai</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&family=Space+Grotesk:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../styles.css" />
+    <script>
+      (function () {
+        try {
+          var t = localStorage.getItem('thai-theme');
+          if (t === 'dark') document.documentElement.setAttribute('data-theme', 'dark');
+        } catch (e) {}
+      })();
+    </script>
+  </head>
+  <body>
+    <div class="aurora aurora-1"></div>
+    <div class="aurora aurora-2"></div>
+
+    <header class="hero hero-compact" id="top">
+      <nav class="nav">
+        <div class="brand"><a href="../index.html" class="brand-link">Learning Thai with Saimai</a></div>
+        <div class="nav-actions">
+          <a class="cta-small" href="alphabet.html">Alphabet</a>
+          <a class="cta-small" href="numbers.html">Numbers</a>
+          <a class="cta-small" href="vocabulary.html">Vocabulary</a>
+          <a class="cta-small" href="phrases.html">Phrases</a>
+          <a class="cta-small" href="tones.html">Tones</a>
+          <a class="cta-small active" href="word-building.html">Word Building</a>
+          <a class="cta-small" href="about.html">About</a>
+          <button class="theme-toggle" type="button" aria-label="Toggle dark mode">🌙</button>
+        </div>
+      </nav>
+
+      <div class="hero-content">
+        <p class="kicker">MODULE 06</p>
+        <h1>How Thai Words Are Built</h1>
+        <p class="subtitle">
+          Thai words are built from patterns, not random symbols. Once you see the pattern, reading gets easier fast.
+        </p>
+      </div>
+    </header>
+
+    <main>
+      <section class="section word-build-grid">
+        <article class="card glow-cyan">
+          <h3>Why There Are No Spaces</h3>
+          <p>
+            Thai writing normally does <strong>not</strong> put spaces between every word. Spaces are mostly used to separate full phrases,
+            clauses, or sentences.
+          </p>
+          <p class="thai-line"><strong>ฉันกินข้าวแล้ว</strong></p>
+          <p class="section-lead">This line has multiple words, but no spaces between each one.</p>
+        </article>
+
+        <article class="card glow-pink">
+          <h3>Basic Syllable Formula</h3>
+          <div class="formula-box">
+            <span>Initial consonant</span>
+            <span>+</span>
+            <span>Vowel pattern (around consonant)</span>
+            <span>+</span>
+            <span>Final consonant (optional)</span>
+            <span>+</span>
+            <span>Tone mark (optional)</span>
+          </div>
+          <p class="section-lead">
+            A single consonant can be a syllable, but most words combine these pieces into one readable sound block.
+          </p>
+        </article>
+
+        <article class="card glow-lime">
+          <h3>How to Read the Pieces</h3>
+          <div class="piece-list">
+            <div class="word-piece"><strong>กา</strong> = ก + -า</div>
+            <div class="word-piece"><strong>เก</strong> = เ- + ก</div>
+            <div class="word-piece"><strong>กิน</strong> = ก + -ิ + น</div>
+            <div class="word-piece"><strong>เก่ง</strong> = เ- + ก + ่ + ง</div>
+          </div>
+          <p class="tone-note">
+            Vowels can appear before, above, below, or after the consonant in writing, even though you still read it as one syllable.
+          </p>
+        </article>
+
+        <article class="card">
+          <h3>Quick Segment Practice</h3>
+          <p>Tap to hear full chunks, then try to break each chunk into parts yourself.</p>
+          <div class="segment-row">
+            <button class="speak-btn" data-phrase="ภาษาไทย">ภาษาไทย</button>
+            <button class="speak-btn" data-phrase="สวัสดีครับ">สวัสดีครับ</button>
+            <button class="speak-btn" data-phrase="กินข้าว">กินข้าว</button>
+          </div>
+        </article>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <p>Designed for joyful Thai learning. Keep practicing daily with Saimai.</p>
+      <a href="#top">Back to top</a>
+    </footer>
+
+    <script src="../script.js"></script>
+  </body>
+</html>

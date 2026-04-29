@@ -11,6 +11,7 @@ const quizPrompt = document.getElementById('quizPrompt');
 const quizFeedback = document.getElementById('quizFeedback');
 const quizScore = document.getElementById('quizScore');
 const nextQuestionButton = document.getElementById('nextQuestion');
+const audioStatus = document.getElementById('audioStatus');
 
 // Each entry has:
 //   symbol  — the Thai character
@@ -108,6 +109,27 @@ const allLetters = [...consonants, ...vowels];
 let currentQuestion = null;
 let attempts = 0;
 let correct = 0;
+let currentLetterAudio = null;
+
+const AUDIO_BASE = '../audio/letters';
+
+function slugifyAudio(text) {
+  return text
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, '-')
+    .replace(/^-+|-+$/g, '') || 'clip';
+}
+
+function audioPath(group, index, letter) {
+  const slug = slugifyAudio(`${letter.name}-${letter.thai}`);
+  return `${AUDIO_BASE}/${group}/${String(index).padStart(2, '0')}-${slug}.mp3`;
+}
+
+function attachAudio(list, group) {
+  list.forEach((letter, index) => {
+    letter.audioFile = audioPath(group, index + 1, letter);
+  });
+}
 
 // Derive the short pronunciation (e.g. "gaw" from "gaw gai") for each entry.
 // For vowels the traditional name starts with "sara" — strip that prefix.
@@ -123,6 +145,44 @@ attachPron(consonants);
 attachPron(shortVowels);
 attachPron(longVowels);
 attachPron(specialVowels);
+attachAudio(consonants, 'consonants');
+attachAudio(shortVowels, 'vowels-short');
+attachAudio(longVowels, 'vowels-long');
+attachAudio(specialVowels, 'vowels-special');
+
+function setAudioStatus(message) {
+  if (audioStatus) {
+    audioStatus.textContent = message;
+  }
+}
+
+function playLetterAudio(audioFile, symbol) {
+  if (!audioFile) {
+    setAudioStatus('Audio status: No file mapped for this letter yet.');
+    return;
+  }
+
+  if (currentLetterAudio) {
+    currentLetterAudio.pause();
+    currentLetterAudio.currentTime = 0;
+  }
+
+  const audio = new Audio(audioFile);
+  currentLetterAudio = audio;
+  setAudioStatus(`Audio status: Loading ${symbol}...`);
+
+  audio.addEventListener('ended', () => {
+    setAudioStatus(`Audio status: Played ${symbol}. Tap another letter.`);
+  });
+
+  audio.play()
+    .then(() => {
+      setAudioStatus(`Audio status: Playing ${symbol}`);
+    })
+    .catch(() => {
+      setAudioStatus(`Audio status: Could not play ${symbol}. Check audio files or browser autoplay policy.`);
+    });
+}
 
 function renderAlphabetGrid(gridElement, letters) {
   if (!gridElement) {
@@ -132,7 +192,7 @@ function renderAlphabetGrid(gridElement, letters) {
   gridElement.innerHTML = letters
     .map(
       (letter) => `
-        <button class="alphabet-tile" type="button" data-letter="${letter.symbol}" data-name="${letter.name}" data-pron="${letter.pron || ''}">
+        <button class="alphabet-tile" type="button" data-letter="${letter.symbol}" data-name="${letter.name}" data-pron="${letter.pron || ''}" data-audio="${letter.audioFile || ''}">
           <span class="tile-char">${letter.symbol}</span>
           <span class="tile-name">${letter.name}</span>
           ${letter.pron ? `<span class="tile-pron">"${letter.pron}"</span>` : ''}
@@ -200,6 +260,7 @@ buildQuestion();
 
     tile.classList.add('active');
     setSpotlight(tile.dataset.letter || '', tile.dataset.name || '', tile.dataset.pron || '');
+    playLetterAudio(tile.dataset.audio || '', tile.dataset.letter || '');
   });
 });
 

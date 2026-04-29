@@ -1,0 +1,650 @@
+[
+  {
+    "group": "consonants",
+    "index": 1,
+    "symbol": "ก",
+    "name": "g",
+    "thai": "gaw gai",
+    "sourceTrack": "thai language-001.mp3",
+    "file": "audio/letters/consonants/01-g-gaw-gai.mp3"
+  },
+  {
+    "group": "consonants",
+    "index": 2,
+    "symbol": "ข",
+    "name": "kh",
+    "thai": "khaw khai",
+    "sourceTrack": "thai language-001.mp3",
+    "file": "audio/letters/consonants/02-kh-khaw-khai.mp3"
+  },
+  {
+    "group": "consonants",
+    "index": 3,
+    "symbol": "ฃ",
+    "name": "kh",
+    "thai": "khaw khuat (obsolete)",
+    "sourceTrack": "thai language-001.mp3",
+    "file": "audio/letters/consonants/03-kh-khaw-khuat-obsolete.mp3"
+  },
+  {
+    "group": "consonants",
+    "index": 4,
+    "symbol": "ค",
+    "name": "kh",
+    "thai": "khaw khwai",
+    "sourceTrack": "thai language-001.mp3",
+    "file": "audio/letters/consonants/04-kh-khaw-khwai.mp3"
+  },
+  {
+    "group": "consonants",
+    "index": 5,
+    "symbol": "ฅ",
+    "name": "kh",
+    "thai": "khaw khon (obsolete)",
+    "sourceTrack": "thai language-001.mp3",
+    "file": "audio/letters/consonants/05-kh-khaw-khon-obsolete.mp3"
+  },
+  {
+    "group": "consonants",
+    "index": 6,
+    "symbol": "ฆ",
+    "name": "kh",
+    "thai": "khaw ra-khang",
+    "sourceTrack": "thai language-001.mp3",
+    "file": "audio/letters/consonants/06-kh-khaw-ra-khang.mp3"
+  },
+  {
+    "group": "consonants",
+    "index": 7,
+    "symbol": "ง",
+    "name": "ng",
+    "thai": "ngaw ngu",
+    "sourceTrack": "thai language-001.mp3",
+    "file": "audio/letters/consonants/07-ng-ngaw-ngu.mp3"
+  },
+  {
+    "group": "consonants",
+    "index": 8,
+    "symbol": "จ",
+    "name": "j",
+    "thai": "jaw jaan",
+    "sourceTrack": "thai language-001.mp3",
+    "file": "audio/letters/consonants/08-j-jaw-jaan.mp3"
+  },
+  {
+    "group": "consonants",
+    "index": 9,
+    "symbol": "ฉ",
+    "name": "ch",
+    "thai": "chaw ching",
+    "sourceTrack": "thai language-001.mp3",
+    "file": "audio/letters/consonants/09-ch-chaw-ching.mp3"
+  },
+  {
+    "group": "consonants",
+    "index": 10,
+    "symbol": "ช",
+    "name": "ch",
+    "thai": "chaw chang",
+    "sourceTrack": "thai language-001.mp3",
+    "file": "audio/letters/consonants/10-ch-chaw-chang.mp3"
+  },
+  {
+    "group": "consonants",
+    "index": 11,
+    "symbol": "ซ",
+    "name": "s",
+    "thai": "saw so",
+    "sourceTrack": "thai language-001.mp3",
+    "file": "audio/letters/consonants/11-s-saw-so.mp3"
+  },
+  {
+    "group": "consonants",
+    "index": 12,
+    "symbol": "ฌ",
+    "name": "ch",
+    "thai": "chaw choe",
+    "sourceTrack": "thai language-001.mp3",
+    "file": "audio/letters/consonants/12-ch-chaw-choe.mp3"
+  },
+  {
+    "group": "consonants",
+    "index": 13,
+    "symbol": "ญ",
+    "name": "y",
+    "thai": "yaw ying",
+    "sourceTrack": "thai language-001.mp3",
+    "file": "audio/letters/consonants/13-y-yaw-ying.mp3"
+  },
+  {
+    "group": "consonants",
+    "index": 14,
+    "symbol": "ฎ",
+    "name": "d",
+    "thai": "daw cha-da",
+    "sourceTrack": "thai language-001.mp3",
+    "file": "audio/letters/consonants/14-d-daw-cha-da.mp3"
+  },
+  {
+    "group": "consonants",
+    "index": 15,
+    "symbol": "ฏ",
+    "name": "dt",
+    "thai": "dtaw pa-dtak",
+    "sourceTrack": "thai language-001.mp3",
+    "file": "audio/letters/consonants/15-dt-dtaw-pa-dtak.mp3"
+  },
+  {
+    "group": "consonants",
+    "index": 16,
+    "symbol": "ฐ",
+    "name": "th",
+    "thai": "thaw than",
+    "sourceTrack": "thai language-001.mp3",
+    "file": "audio/letters/consonants/16-th-thaw-than.mp3"
+  },
+  {
+    "group": "consonants",
+    "index": 17,
+    "symbol": "ฑ",
+    "name": "th",
+    "thai": "thaw montho",
+    "sourceTrack": "thai language-001.mp3",
+    "file": "audio/letters/consonants/17-th-thaw-montho.mp3"
+  },
+  {
+    "group": "consonants",
+    "index": 18,
+    "symbol": "ฒ",
+    "name": "th",
+    "thai": "thaw phu-thao",
+    "sourceTrack": "thai language-001.mp3",
+    "file": "audio/letters/consonants/18-th-thaw-phu-thao.mp3"
+  },
+  {
+    "group": "consonants",
+    "index": 19,
+    "symbol": "ณ",
+    "name": "n",
+    "thai": "naw nen",
+    "sourceTrack": "thai language-001.mp3",
+    "file": "audio/letters/consonants/19-n-naw-nen.mp3"
+  },
+  {
+    "group": "consonants",
+    "index": 20,
+    "symbol": "ด",
+    "name": "d",
+    "thai": "daw dek",
+    "sourceTrack": "thai language-001.mp3",
+    "file": "audio/letters/consonants/20-d-daw-dek.mp3"
+  },
+  {
+    "group": "consonants",
+    "index": 21,
+    "symbol": "ต",
+    "name": "dt",
+    "thai": "dtaw dtao",
+    "sourceTrack": "thai language-001.mp3",
+    "file": "audio/letters/consonants/21-dt-dtaw-dtao.mp3"
+  },
+  {
+    "group": "consonants",
+    "index": 22,
+    "symbol": "ถ",
+    "name": "th",
+    "thai": "thaw thung",
+    "sourceTrack": "thai language-001.mp3",
+    "file": "audio/letters/consonants/22-th-thaw-thung.mp3"
+  },
+  {
+    "group": "consonants",
+    "index": 23,
+    "symbol": "ท",
+    "name": "th",
+    "thai": "thaw thahan",
+    "sourceTrack": "thai language-001.mp3",
+    "file": "audio/letters/consonants/23-th-thaw-thahan.mp3"
+  },
+  {
+    "group": "consonants",
+    "index": 24,
+    "symbol": "ธ",
+    "name": "th",
+    "thai": "thaw thong",
+    "sourceTrack": "thai language-001.mp3",
+    "file": "audio/letters/consonants/24-th-thaw-thong.mp3"
+  },
+  {
+    "group": "consonants",
+    "index": 25,
+    "symbol": "น",
+    "name": "n",
+    "thai": "naw nu",
+    "sourceTrack": "thai language-001.mp3",
+    "file": "audio/letters/consonants/25-n-naw-nu.mp3"
+  },
+  {
+    "group": "consonants",
+    "index": 26,
+    "symbol": "บ",
+    "name": "b",
+    "thai": "baw baimai",
+    "sourceTrack": "thai language-001.mp3",
+    "file": "audio/letters/consonants/26-b-baw-baimai.mp3"
+  },
+  {
+    "group": "consonants",
+    "index": 27,
+    "symbol": "ป",
+    "name": "bp",
+    "thai": "bpaw bplaa",
+    "sourceTrack": "thai language-001.mp3",
+    "file": "audio/letters/consonants/27-bp-bpaw-bplaa.mp3"
+  },
+  {
+    "group": "consonants",
+    "index": 28,
+    "symbol": "ผ",
+    "name": "ph",
+    "thai": "phaw phueng",
+    "sourceTrack": "thai language-001.mp3",
+    "file": "audio/letters/consonants/28-ph-phaw-phueng.mp3"
+  },
+  {
+    "group": "consonants",
+    "index": 29,
+    "symbol": "ฝ",
+    "name": "f",
+    "thai": "faw faa",
+    "sourceTrack": "thai language-001.mp3",
+    "file": "audio/letters/consonants/29-f-faw-faa.mp3"
+  },
+  {
+    "group": "consonants",
+    "index": 30,
+    "symbol": "พ",
+    "name": "ph",
+    "thai": "phaw phaan",
+    "sourceTrack": "thai language-001.mp3",
+    "file": "audio/letters/consonants/30-ph-phaw-phaan.mp3"
+  },
+  {
+    "group": "consonants",
+    "index": 31,
+    "symbol": "ฟ",
+    "name": "f",
+    "thai": "faw fan",
+    "sourceTrack": "thai language-001.mp3",
+    "file": "audio/letters/consonants/31-f-faw-fan.mp3"
+  },
+  {
+    "group": "consonants",
+    "index": 32,
+    "symbol": "ภ",
+    "name": "ph",
+    "thai": "phaw sam-phao",
+    "sourceTrack": "thai language-001.mp3",
+    "file": "audio/letters/consonants/32-ph-phaw-sam-phao.mp3"
+  },
+  {
+    "group": "consonants",
+    "index": 33,
+    "symbol": "ม",
+    "name": "m",
+    "thai": "maw maa",
+    "sourceTrack": "thai language-001.mp3",
+    "file": "audio/letters/consonants/33-m-maw-maa.mp3"
+  },
+  {
+    "group": "consonants",
+    "index": 34,
+    "symbol": "ย",
+    "name": "y",
+    "thai": "yaw yak",
+    "sourceTrack": "thai language-001.mp3",
+    "file": "audio/letters/consonants/34-y-yaw-yak.mp3"
+  },
+  {
+    "group": "consonants",
+    "index": 35,
+    "symbol": "ร",
+    "name": "r",
+    "thai": "raw ruea",
+    "sourceTrack": "thai language-001.mp3",
+    "file": "audio/letters/consonants/35-r-raw-ruea.mp3"
+  },
+  {
+    "group": "consonants",
+    "index": 36,
+    "symbol": "ล",
+    "name": "l",
+    "thai": "law ling",
+    "sourceTrack": "thai language-001.mp3",
+    "file": "audio/letters/consonants/36-l-law-ling.mp3"
+  },
+  {
+    "group": "consonants",
+    "index": 37,
+    "symbol": "ว",
+    "name": "w",
+    "thai": "waw waen",
+    "sourceTrack": "thai language-001.mp3",
+    "file": "audio/letters/consonants/37-w-waw-waen.mp3"
+  },
+  {
+    "group": "consonants",
+    "index": 38,
+    "symbol": "ศ",
+    "name": "s",
+    "thai": "saw sala",
+    "sourceTrack": "thai language-001.mp3",
+    "file": "audio/letters/consonants/38-s-saw-sala.mp3"
+  },
+  {
+    "group": "consonants",
+    "index": 39,
+    "symbol": "ษ",
+    "name": "s",
+    "thai": "saw rue-si",
+    "sourceTrack": "thai language-001.mp3",
+    "file": "audio/letters/consonants/39-s-saw-rue-si.mp3"
+  },
+  {
+    "group": "consonants",
+    "index": 40,
+    "symbol": "ส",
+    "name": "s",
+    "thai": "saw suea",
+    "sourceTrack": "thai language-001.mp3",
+    "file": "audio/letters/consonants/40-s-saw-suea.mp3"
+  },
+  {
+    "group": "consonants",
+    "index": 41,
+    "symbol": "ห",
+    "name": "h",
+    "thai": "haw hip",
+    "sourceTrack": "thai language-001.mp3",
+    "file": "audio/letters/consonants/41-h-haw-hip.mp3"
+  },
+  {
+    "group": "consonants",
+    "index": 42,
+    "symbol": "ฬ",
+    "name": "l",
+    "thai": "law chu-laa",
+    "sourceTrack": "thai language-001.mp3",
+    "file": "audio/letters/consonants/42-l-law-chu-laa.mp3"
+  },
+  {
+    "group": "consonants",
+    "index": 43,
+    "symbol": "อ",
+    "name": "aw",
+    "thai": "aw aang",
+    "sourceTrack": "thai language-001.mp3",
+    "file": "audio/letters/consonants/43-aw-aw-aang.mp3"
+  },
+  {
+    "group": "consonants",
+    "index": 44,
+    "symbol": "ฮ",
+    "name": "h",
+    "thai": "haw nok-huk",
+    "sourceTrack": "thai language-001.mp3",
+    "file": "audio/letters/consonants/44-h-haw-nok-huk.mp3"
+  },
+  {
+    "group": "vowels-short",
+    "index": 1,
+    "symbol": "-ะ",
+    "name": "a",
+    "thai": "sara a",
+    "sourceTrack": "thai language-002.mp3",
+    "file": "audio/letters/vowels-short/01-a-sara-a.mp3"
+  },
+  {
+    "group": "vowels-short",
+    "index": 2,
+    "symbol": "-ิ",
+    "name": "i",
+    "thai": "sara i",
+    "sourceTrack": "thai language-002.mp3",
+    "file": "audio/letters/vowels-short/02-i-sara-i.mp3"
+  },
+  {
+    "group": "vowels-short",
+    "index": 3,
+    "symbol": "-ึ",
+    "name": "ue",
+    "thai": "sara ue",
+    "sourceTrack": "thai language-002.mp3",
+    "file": "audio/letters/vowels-short/03-ue-sara-ue.mp3"
+  },
+  {
+    "group": "vowels-short",
+    "index": 4,
+    "symbol": "-ุ",
+    "name": "u",
+    "thai": "sara u",
+    "sourceTrack": "thai language-002.mp3",
+    "file": "audio/letters/vowels-short/04-u-sara-u.mp3"
+  },
+  {
+    "group": "vowels-short",
+    "index": 5,
+    "symbol": "เ-ะ",
+    "name": "e",
+    "thai": "sara e (short)",
+    "sourceTrack": "thai language-002.mp3",
+    "file": "audio/letters/vowels-short/05-e-sara-e-short.mp3"
+  },
+  {
+    "group": "vowels-short",
+    "index": 6,
+    "symbol": "แ-ะ",
+    "name": "ae",
+    "thai": "sara ae (short)",
+    "sourceTrack": "thai language-002.mp3",
+    "file": "audio/letters/vowels-short/06-ae-sara-ae-short.mp3"
+  },
+  {
+    "group": "vowels-short",
+    "index": 7,
+    "symbol": "โ-ะ",
+    "name": "o",
+    "thai": "sara o (short)",
+    "sourceTrack": "thai language-002.mp3",
+    "file": "audio/letters/vowels-short/07-o-sara-o-short.mp3"
+  },
+  {
+    "group": "vowels-short",
+    "index": 8,
+    "symbol": "เ-าะ",
+    "name": "aw",
+    "thai": "sara aw (short)",
+    "sourceTrack": "thai language-002.mp3",
+    "file": "audio/letters/vowels-short/08-aw-sara-aw-short.mp3"
+  },
+  {
+    "group": "vowels-short",
+    "index": 9,
+    "symbol": "เ-อะ",
+    "name": "er",
+    "thai": "sara er (short)",
+    "sourceTrack": "thai language-002.mp3",
+    "file": "audio/letters/vowels-short/09-er-sara-er-short.mp3"
+  },
+  {
+    "group": "vowels-short",
+    "index": 10,
+    "symbol": "เ-ียะ",
+    "name": "ia",
+    "thai": "sara ia (short)",
+    "sourceTrack": "thai language-002.mp3",
+    "file": "audio/letters/vowels-short/10-ia-sara-ia-short.mp3"
+  },
+  {
+    "group": "vowels-short",
+    "index": 11,
+    "symbol": "เ-ือะ",
+    "name": "uea",
+    "thai": "sara uea (short)",
+    "sourceTrack": "thai language-002.mp3",
+    "file": "audio/letters/vowels-short/11-uea-sara-uea-short.mp3"
+  },
+  {
+    "group": "vowels-short",
+    "index": 12,
+    "symbol": "-ัวะ",
+    "name": "ua",
+    "thai": "sara ua (short)",
+    "sourceTrack": "thai language-002.mp3",
+    "file": "audio/letters/vowels-short/12-ua-sara-ua-short.mp3"
+  },
+  {
+    "group": "vowels-long",
+    "index": 1,
+    "symbol": "-า",
+    "name": "aa",
+    "thai": "sara aa",
+    "sourceTrack": "thai language-003.mp3",
+    "file": "audio/letters/vowels-long/01-aa-sara-aa.mp3"
+  },
+  {
+    "group": "vowels-long",
+    "index": 2,
+    "symbol": "-ี",
+    "name": "ii",
+    "thai": "sara ii",
+    "sourceTrack": "thai language-003.mp3",
+    "file": "audio/letters/vowels-long/02-ii-sara-ii.mp3"
+  },
+  {
+    "group": "vowels-long",
+    "index": 3,
+    "symbol": "-ื",
+    "name": "uee",
+    "thai": "sara uee",
+    "sourceTrack": "thai language-003.mp3",
+    "file": "audio/letters/vowels-long/03-uee-sara-uee.mp3"
+  },
+  {
+    "group": "vowels-long",
+    "index": 4,
+    "symbol": "-ู",
+    "name": "uu",
+    "thai": "sara uu",
+    "sourceTrack": "thai language-003.mp3",
+    "file": "audio/letters/vowels-long/04-uu-sara-uu.mp3"
+  },
+  {
+    "group": "vowels-long",
+    "index": 5,
+    "symbol": "เ-",
+    "name": "ee",
+    "thai": "sara e (long)",
+    "sourceTrack": "thai language-003.mp3",
+    "file": "audio/letters/vowels-long/05-ee-sara-e-long.mp3"
+  },
+  {
+    "group": "vowels-long",
+    "index": 6,
+    "symbol": "แ-",
+    "name": "aae",
+    "thai": "sara ae (long)",
+    "sourceTrack": "thai language-003.mp3",
+    "file": "audio/letters/vowels-long/06-aae-sara-ae-long.mp3"
+  },
+  {
+    "group": "vowels-long",
+    "index": 7,
+    "symbol": "โ-",
+    "name": "oo",
+    "thai": "sara o (long)",
+    "sourceTrack": "thai language-003.mp3",
+    "file": "audio/letters/vowels-long/07-oo-sara-o-long.mp3"
+  },
+  {
+    "group": "vowels-long",
+    "index": 8,
+    "symbol": "-อ",
+    "name": "aaw",
+    "thai": "sara aw (long)",
+    "sourceTrack": "thai language-003.mp3",
+    "file": "audio/letters/vowels-long/08-aaw-sara-aw-long.mp3"
+  },
+  {
+    "group": "vowels-long",
+    "index": 9,
+    "symbol": "เ-อ",
+    "name": "eer",
+    "thai": "sara er (long)",
+    "sourceTrack": "thai language-003.mp3",
+    "file": "audio/letters/vowels-long/09-eer-sara-er-long.mp3"
+  },
+  {
+    "group": "vowels-long",
+    "index": 10,
+    "symbol": "เ-ีย",
+    "name": "iia",
+    "thai": "sara ia (long)",
+    "sourceTrack": "thai language-003.mp3",
+    "file": "audio/letters/vowels-long/10-iia-sara-ia-long.mp3"
+  },
+  {
+    "group": "vowels-long",
+    "index": 11,
+    "symbol": "เ-ือ",
+    "name": "uuea",
+    "thai": "sara uea (long)",
+    "sourceTrack": "thai language-003.mp3",
+    "file": "audio/letters/vowels-long/11-uuea-sara-uea-long.mp3"
+  },
+  {
+    "group": "vowels-long",
+    "index": 12,
+    "symbol": "-ัว",
+    "name": "uua",
+    "thai": "sara ua (long)",
+    "sourceTrack": "thai language-003.mp3",
+    "file": "audio/letters/vowels-long/12-uua-sara-ua-long.mp3"
+  },
+  {
+    "group": "vowels-special",
+    "index": 1,
+    "symbol": "อำ",
+    "name": "am",
+    "thai": "sara am",
+    "sourceTrack": "thai language-004.mp3",
+    "file": "audio/letters/vowels-special/01-am-sara-am.mp3"
+  },
+  {
+    "group": "vowels-special",
+    "index": 2,
+    "symbol": "ใอ",
+    "name": "ai",
+    "thai": "sara ai mai-muan",
+    "sourceTrack": "thai language-004.mp3",
+    "file": "audio/letters/vowels-special/02-ai-sara-ai-mai-muan.mp3"
+  },
+  {
+    "group": "vowels-special",
+    "index": 3,
+    "symbol": "ไอ",
+    "name": "ai",
+    "thai": "sara ai mai-malai",
+    "sourceTrack": "thai language-004.mp3",
+    "file": "audio/letters/vowels-special/03-ai-sara-ai-mai-malai.mp3"
+  },
+  {
+    "group": "vowels-special",
+    "index": 4,
+    "symbol": "เอา",
+    "name": "ao",
+    "thai": "sara ao",
+    "sourceTrack": "thai language-004.mp3",
+    "file": "audio/letters/vowels-special/04-ao-sara-ao.mp3"
+  }
+]

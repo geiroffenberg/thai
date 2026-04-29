@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tones — Learning Thai with Saimai</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&family=Space+Grotesk:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../styles.css" />
+    <script>
+      (function () {
+        try {
+          var t = localStorage.getItem('thai-theme');
+          if (t === 'dark') document.documentElement.setAttribute('data-theme', 'dark');
+        } catch (e) {}
+      })();
+    </script>
+  </head>
+  <body>
+    <div class="aurora aurora-1"></div>
+    <div class="aurora aurora-2"></div>
+
+    <header class="hero hero-compact" id="top">
+      <nav class="nav">
+        <div class="brand"><a href="../index.html" class="brand-link">Learning Thai with Saimai</a></div>
+        <div class="nav-actions">
+          <a class="cta-small" href="alphabet.html">Alphabet</a>
+          <a class="cta-small" href="numbers.html">Numbers</a>
+          <a class="cta-small" href="vocabulary.html">Vocabulary</a>
+          <a class="cta-small" href="phrases.html">Phrases</a>
+          <a class="cta-small active" href="tones.html">Tones</a>
+          <a class="cta-small" href="word-building.html">Word Building</a>
+          <a class="cta-small" href="about.html">About</a>
+          <button class="theme-toggle" type="button" aria-label="Toggle dark mode">🌙</button>
+        </div>
+      </nav>
+
+      <div class="hero-content">
+        <p class="kicker">MODULE 05</p>
+        <h1>Thai Tone Trainer</h1>
+        <p class="subtitle">
+          Tones are meaning. Same consonants and vowels can become different words when your voice moves.
+        </p>
+      </div>
+    </header>
+
+    <main>
+      <section class="section tones-grid">
+        <article class="card glow-pink">
+          <h3>The 5 Thai Tones</h3>
+          <ul>
+            <li><strong>Mid</strong> (เสียงสามัญ): steady, level voice</li>
+            <li><strong>Low</strong> (เสียงเอก): starts mid and drops lower</li>
+            <li><strong>Falling</strong> (เสียงโท): starts high and falls</li>
+            <li><strong>High</strong> (เสียงตรี): starts higher and stays high</li>
+            <li><strong>Rising</strong> (เสียงจัตวา): starts low and rises up</li>
+          </ul>
+          <p class="tone-note">
+            Important: tone marks help, but final tone also depends on consonant class and whether the syllable is open or closed.
+          </p>
+        </article>
+
+        <article class="card glow-cyan">
+          <h3>Tone Marks You Will See</h3>
+          <div class="tone-table-wrap">
+            <table class="tone-table">
+              <thead>
+                <tr>
+                  <th>Mark</th>
+                  <th>Thai name</th>
+                  <th>Symbol</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>No mark</td>
+                  <td>ไม้สามัญ</td>
+                  <td>-</td>
+                </tr>
+                <tr>
+                  <td>Mai ek</td>
+                  <td>ไม้เอก</td>
+                  <td>่</td>
+                </tr>
+                <tr>
+                  <td>Mai tho</td>
+                  <td>ไม้โท</td>
+                  <td>้</td>
+                </tr>
+                <tr>
+                  <td>Mai tri</td>
+                  <td>ไม้ตรี</td>
+                  <td>๊</td>
+                </tr>
+                <tr>
+                  <td>Mai chattawa</td>
+                  <td>ไม้จัตวา</td>
+                  <td>๋</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </article>
+
+        <article class="card glow-lime tone-practice">
+          <h3>Ear Practice</h3>
+          <p>Listen and copy the contour. The goal is to shape the voice clearly, not perfect speed.</p>
+          <button class="speak-btn" data-phrase="มา">Mid sample: มา</button>
+          <button class="speak-btn" data-phrase="หม่า">Low sample: หม่า</button>
+          <button class="speak-btn" data-phrase="ม้า">Falling sample: ม้า</button>
+          <button class="speak-btn" data-phrase="ม๊า">High sample: ม๊า</button>
+          <button class="speak-btn" data-phrase="หมา">Rising sample: หมา</button>
+        </article>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <p>Designed for joyful Thai learning. Keep practicing daily with Saimai.</p>
+      <a href="#top">Back to top</a>
+    </footer>
+
+    <script src="../script.js"></script>
+  </body>
+</html>
