@@ -43,13 +43,22 @@
         <p class="kicker">MODULE 01</p>
         <h1>Thai Alphabet Lab</h1>
         <p class="subtitle">
-          Click any letter to focus it. Type the Thai character in the quiz to test recall.
+          Click any letter to focus it and hear audio. Use Test Mode to hide hints and self-check.
         </p>
       </div>
     </header>
 
     <main>
       <section class="section alphabet-lab" id="alphabet-lab">
+        <div class="mode-switch-wrap">
+          <p class="mode-switch-label">Study Mode</p>
+          <div class="mode-switch" role="group" aria-label="Alphabet study mode">
+            <button type="button" class="mode-btn active" id="learnModeBtn" aria-pressed="true">Learning Mode</button>
+            <button type="button" class="mode-btn" id="testModeBtn" aria-pressed="false">Test Mode</button>
+          </div>
+          <p class="mode-hint" id="modeHint">Learning mode shows each tile with sound labels and pronunciation hints.</p>
+        </div>
+
         <div class="alphabet-layout">
           <article class="card alphabet-panel">
             <h3>Consonants (44)</h3>
@@ -78,19 +87,6 @@
               <p class="spotlight-name" id="spotlightName">g "gaw"</p>
             </div>
             <p class="audio-note" id="audioStatus">Audio status: Tap a letter tile to hear its sound.</p>
-
-            <h3>Letter Test</h3>
-            <p id="quizPrompt" class="quiz-prompt">Type the Thai letter that makes the sound: g</p>
-            <form id="alphabetQuizForm" class="quiz-form">
-              <label for="quizAnswer">Your answer</label>
-              <input id="quizAnswer" name="quizAnswer" type="text" maxlength="6" autocomplete="off" required />
-              <div class="quiz-actions">
-                <button type="submit" class="btn btn-primary quiz-btn">Check</button>
-                <button type="button" id="nextQuestion" class="btn btn-secondary quiz-btn">Next Letter</button>
-              </div>
-            </form>
-            <p id="quizFeedback" class="quiz-feedback"></p>
-            <p id="quizScore" class="quiz-score">Score: 0/0</p>
           </aside>
         </div>
       </section>

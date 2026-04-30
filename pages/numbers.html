@@ -43,48 +43,89 @@
         <p class="kicker">MODULE 02</p>
         <h1>Numbers</h1>
         <p class="subtitle">
-          Build confidence with daily numbers for money, time, and shopping.
+          Learn the core numbers, the double-digit logic, and the powers of 10. The rest is just combining them.
         </p>
       </div>
     </header>
 
     <main>
-      <section class="section">
-        <div class="grid modules-grid">
-          <article class="card glow-pink">
-            <h3>1 – 10</h3>
-            <ul>
-              <li>1 - หนึ่ง (neung)</li>
-              <li>2 - สอง (song)</li>
-              <li>3 - สาม (saam)</li>
-              <li>4 - สี่ (sii)</li>
-              <li>5 - ห้า (haa)</li>
-              <li>6 - หก (hok)</li>
-              <li>7 - เจ็ด (jet)</li>
-              <li>8 - แปด (paet)</li>
-              <li>9 - เก้า (gao)</li>
-              <li>10 - สิบ (sip)</li>
-            </ul>
-          </article>
+      <section class="section numbers-lab" id="numbers-lab">
 
-          <article class="card glow-cyan">
-            <h3>Tens & Hundreds</h3>
-            <ul>
-              <li>20 - ยี่สิบ (yii-sip)</li>
-              <li>30 - สามสิบ (saam-sip)</li>
-              <li>100 - ร้อย (roi)</li>
-              <li>1000 - พัน (phan)</li>
-            </ul>
-          </article>
-
-          <article class="card glow-lime">
-            <h3>Practice</h3>
-            <p>Click to hear:</p>
-            <button class="speak-btn" data-phrase="หนึ่ง สอง สาม">หนึ่ง สอง สาม</button>
-            <button class="speak-btn" data-phrase="ห้าสิบบาท">ห้าสิบบาท (50 baht)</button>
-            <button class="speak-btn" data-phrase="หนึ่งร้อย">หนึ่งร้อย (100)</button>
-          </article>
+        <div class="mode-switch-wrap">
+          <p class="mode-switch-label">Study Mode</p>
+          <div class="mode-switch" role="group" aria-label="Numbers study mode">
+            <button type="button" class="mode-btn active" id="numLearnModeBtn" aria-pressed="true">Learning Mode</button>
+            <button type="button" class="mode-btn" id="numTestModeBtn" aria-pressed="false">Test Mode</button>
+          </div>
+          <p class="mode-hint" id="numModeHint">Learning mode shows each number with its Thai word and pronunciation.</p>
         </div>
+
+        <div class="numbers-layout">
+          <div class="numbers-main">
+
+            <!-- 1 – 10 -->
+            <div class="card number-section">
+              <h3>1 – 10 <span class="section-tag">Learn each individually</span></h3>
+              <div class="number-grid" id="grid1to10"></div>
+            </div>
+
+            <!-- Double digits -->
+            <div class="card number-section">
+              <h3>Double Digits <span class="section-tag">It's all logic</span></h3>
+              <p class="number-note">
+                Tens are formed by combining a digit + <strong>สิบ (sip)</strong> — that's it.
+                <strong>30</strong> = สาม + สิบ = <strong>สามสิบ (saam-sip)</strong>.
+                The only exceptions: <strong>20</strong> uses <strong>ยี่ (yii)</strong> instead of สอง,
+                and when <strong>1</strong> is the last digit of a number (11, 21, 31…) it becomes <strong>เอ็ด (et)</strong>.
+              </p>
+              <h4 class="number-subheading">Exceptions — learn these two</h4>
+              <div class="number-grid number-grid-sm" id="gridExceptions"></div>
+              <h4 class="number-subheading">The tens pattern (apply to any digit)</h4>
+              <div class="number-grid" id="gridTens"></div>
+            </div>
+
+            <!-- Powers of 10 -->
+            <div class="card number-section">
+              <h3>Powers of 10 <span class="section-tag">One word each — combine freely</span></h3>
+              <p class="number-note">
+                Each power has its own Thai word. Combine them with the digits you already know:
+                <strong>สามร้อย (saam roi)</strong> = 300, <strong>สองพัน (song phan)</strong> = 2 000.
+              </p>
+              <div class="number-grid" id="gridPowers"></div>
+            </div>
+
+          </div>
+
+          <!-- Number Builder practice panel -->
+          <aside class="card numbers-side" id="numbersPractice">
+            <h3>Number Builder</h3>
+            <p class="practice-lead">How many digits?</p>
+            <div class="digit-selector" role="group" aria-label="Select number of digits">
+              <button type="button" class="digit-btn active" data-digits="2">2</button>
+              <button type="button" class="digit-btn" data-digits="3">3</button>
+              <button type="button" class="digit-btn" data-digits="4">4</button>
+              <button type="button" class="digit-btn" data-digits="5">5</button>
+              <button type="button" class="digit-btn" data-digits="6">6</button>
+              <button type="button" class="digit-btn" data-digits="7">7</button>
+            </div>
+
+            <p class="practice-prompt">How do you say this number in Thai?</p>
+            <div class="practice-number" id="practiceNumber">45</div>
+
+            <div class="practice-answer hidden" id="practiceAnswer">
+              <span class="practice-thai" id="practiceThai"></span>
+              <span class="practice-rom" id="practiceRom"></span>
+            </div>
+
+            <p class="audio-note" id="numAudioStatus"></p>
+
+            <div class="practice-actions">
+              <button type="button" class="btn btn-primary practice-btn" id="revealBtn">Reveal</button>
+              <button type="button" class="btn btn-secondary practice-btn" id="nextNumBtn">Next</button>
+            </div>
+          </aside>
+        </div>
+
       </section>
     </main>
 
@@ -94,5 +135,6 @@
     </footer>
 
     <script src="../script.js"></script>
+    <script src="../numbers.js"></script>
   </body>
 </html>

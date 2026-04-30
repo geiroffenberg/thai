@@ -409,6 +409,56 @@ main {
   animation: rise 0.55s ease;
 }
 
+.mode-switch-wrap {
+  margin-bottom: 1rem;
+}
+
+.mode-switch-label {
+  margin: 0 0 0.45rem;
+  font-size: 0.76rem;
+  font-weight: 700;
+  letter-spacing: 0.9px;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.mode-switch {
+  display: inline-flex;
+  gap: 0.4rem;
+  padding: 0.35rem;
+  border-radius: 999px;
+  border: 1px solid var(--card-border);
+  background: var(--surface);
+}
+
+.mode-btn {
+  border: 1px solid transparent;
+  background: transparent;
+  color: var(--thai-navy);
+  padding: 0.45rem 0.85rem;
+  border-radius: 999px;
+  font-weight: 700;
+  font-family: inherit;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.mode-btn:hover {
+  border-color: var(--thai-navy);
+}
+
+.mode-btn.active {
+  background: var(--thai-navy);
+  color: #ffffff;
+  border-color: var(--thai-navy);
+}
+
+.mode-hint {
+  margin: 0.55rem 0 0;
+  color: var(--muted);
+  font-size: 0.88rem;
+}
+
 .alphabet-layout {
   display: grid;
   grid-template-columns: 2fr 1fr;
@@ -497,6 +547,27 @@ main {
   font-size: 0.68rem;
   color: var(--muted);
   font-style: italic;
+}
+
+.alphabet-lab[data-mode="test"] .alphabet-tile {
+  min-height: 72px;
+  place-items: center;
+}
+
+.alphabet-lab[data-mode="test"] .alphabet-tile .tile-name,
+.alphabet-lab[data-mode="test"] .alphabet-tile .tile-pron {
+  display: none;
+}
+
+.alphabet-lab[data-mode="test"] .alphabet-tile.revealed {
+  min-height: 86px;
+  place-items: initial;
+  align-content: center;
+}
+
+.alphabet-lab[data-mode="test"] .alphabet-tile.revealed .tile-name,
+.alphabet-lab[data-mode="test"] .alphabet-tile.revealed .tile-pron {
+  display: block;
 }
 
 .letter-spotlight {
@@ -677,6 +748,274 @@ main {
 @media (max-width: 520px) {
   .nav-actions {
     grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+/* --- Numbers page --- */
+
+.numbers-lab {
+  animation: rise 0.55s ease;
+}
+
+.numbers-layout {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 1.1rem;
+  align-items: start;
+}
+
+.numbers-main {
+  display: flex;
+  flex-direction: column;
+  gap: 1.1rem;
+}
+
+.number-section h3 {
+  margin-bottom: 0.5rem;
+  display: flex;
+  align-items: baseline;
+  gap: 0.6rem;
+  flex-wrap: wrap;
+}
+
+.section-tag {
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.number-subheading {
+  margin: 0.9rem 0 0.5rem;
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.number-note {
+  margin: 0 0 0.9rem;
+  padding: 0.6rem 0.8rem;
+  background: var(--bg-soft);
+  border-left: 3px solid var(--gold);
+  border-radius: 6px;
+  color: var(--text);
+  font-size: 0.9rem;
+  line-height: 1.6;
+}
+
+.number-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(82px, 1fr));
+  gap: 0.55rem;
+  margin-bottom: 0.5rem;
+}
+
+.number-grid-sm {
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+}
+
+/* Tiles — same feel as .alphabet-tile */
+.number-tile {
+  border: 1px solid var(--card-border);
+  background: var(--surface);
+  border-radius: 10px;
+  color: var(--text);
+  min-height: 86px;
+  padding: 0.45rem;
+  cursor: pointer;
+  display: grid;
+  gap: 0.18rem;
+  align-content: center;
+  transition: 0.18s ease;
+  font-family: inherit;
+  text-align: center;
+}
+
+.number-tile:hover {
+  transform: translateY(-2px);
+  border-color: var(--thai-navy);
+  box-shadow: 0 6px 14px rgba(46, 58, 107, 0.18);
+}
+
+.number-tile.active {
+  border-color: var(--thai-red);
+  background: var(--surface-2);
+  box-shadow: 0 0 0 2px rgba(200, 35, 60, 0.25);
+}
+
+.num-tile-digit {
+  font-size: 1.65rem;
+  font-weight: 700;
+  line-height: 1;
+  color: var(--thai-navy);
+}
+
+.number-tile.active .num-tile-digit {
+  color: var(--thai-red);
+}
+
+.num-tile-thai {
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: var(--thai-navy);
+  letter-spacing: 0.3px;
+}
+
+.num-tile-rom {
+  font-size: 0.68rem;
+  color: var(--muted);
+  font-style: italic;
+}
+
+.num-tile-note {
+  font-size: 0.6rem;
+  color: var(--gold);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+  margin-top: 0.1rem;
+}
+
+/* Test mode — hide Thai and romanization until revealed */
+.numbers-lab[data-mode="test"] .number-tile {
+  min-height: 72px;
+  place-items: center;
+}
+
+.numbers-lab[data-mode="test"] .number-tile .num-tile-thai,
+.numbers-lab[data-mode="test"] .number-tile .num-tile-rom,
+.numbers-lab[data-mode="test"] .number-tile .num-tile-note {
+  display: none;
+}
+
+.numbers-lab[data-mode="test"] .number-tile.revealed {
+  min-height: 86px;
+  place-items: initial;
+  align-content: center;
+}
+
+.numbers-lab[data-mode="test"] .number-tile.revealed .num-tile-thai,
+.numbers-lab[data-mode="test"] .number-tile.revealed .num-tile-rom,
+.numbers-lab[data-mode="test"] .number-tile.revealed .num-tile-note {
+  display: block;
+}
+
+/* Spotlight sidebar */
+.numbers-side h3 {
+  margin-bottom: 0.55rem;
+}
+
+.practice-lead {
+  margin: 0 0 0.4rem;
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.digit-selector {
+  display: flex;
+  gap: 0.35rem;
+  flex-wrap: wrap;
+  margin-bottom: 1rem;
+}
+
+.digit-btn {
+  border: 1px solid var(--card-border);
+  background: var(--surface);
+  color: var(--thai-navy);
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  font-family: "Orbitron", sans-serif;
+  font-weight: 700;
+  font-size: 0.78rem;
+  cursor: pointer;
+  transition: 0.18s ease;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.digit-btn:hover {
+  border-color: var(--thai-navy);
+}
+
+.digit-btn.active {
+  background: var(--thai-navy);
+  border-color: var(--thai-navy);
+  color: #ffffff;
+}
+
+.practice-prompt {
+  margin: 0 0 0.4rem;
+  color: var(--muted);
+  font-size: 0.88rem;
+}
+
+.practice-number {
+  font-family: "Orbitron", sans-serif;
+  font-size: 2.8rem;
+  font-weight: 700;
+  color: var(--thai-red);
+  line-height: 1;
+  margin-bottom: 0.9rem;
+  letter-spacing: 1px;
+}
+
+.practice-answer {
+  border: 1px solid var(--card-border);
+  border-radius: 10px;
+  padding: 0.75rem 1rem;
+  background: var(--bg-soft);
+  margin-bottom: 0.9rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.practice-answer.hidden {
+  display: none;
+}
+
+.practice-thai {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--thai-navy);
+  line-height: 1.2;
+}
+
+.practice-rom {
+  font-size: 0.9rem;
+  color: var(--muted);
+  font-style: italic;
+}
+
+.practice-actions {
+  display: flex;
+  gap: 0.55rem;
+}
+
+.practice-btn {
+  border: 0;
+  cursor: pointer;
+  flex: 1;
+}
+
+.practice-btn:disabled {
+  opacity: 0.4;
+  cursor: default;
+  transform: none;
+}
+
+@media (max-width: 880px) {
+  .numbers-layout {
+    grid-template-columns: 1fr;
   }
 }
 

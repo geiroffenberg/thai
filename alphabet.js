@@ -12,6 +12,10 @@ const quizFeedback = document.getElementById('quizFeedback');
 const quizScore = document.getElementById('quizScore');
 const nextQuestionButton = document.getElementById('nextQuestion');
 const audioStatus = document.getElementById('audioStatus');
+const alphabetLab = document.getElementById('alphabet-lab');
+const learnModeButton = document.getElementById('learnModeBtn');
+const testModeButton = document.getElementById('testModeBtn');
+const modeHint = document.getElementById('modeHint');
 
 // Each entry has:
 //   symbol  — the Thai character
@@ -110,6 +114,9 @@ let currentQuestion = null;
 let attempts = 0;
 let correct = 0;
 let currentLetterAudio = null;
+let activeMode = 'learn';
+
+const MODE_STORAGE_KEY = 'thai-alphabet-mode';
 
 const AUDIO_BASE = '../audio/letters';
 
@@ -154,6 +161,55 @@ function setAudioStatus(message) {
   if (audioStatus) {
     audioStatus.textContent = message;
   }
+}
+
+function updateModeButtons() {
+  const isLearnMode = activeMode === 'learn';
+
+  if (learnModeButton) {
+    learnModeButton.classList.toggle('active', isLearnMode);
+    learnModeButton.setAttribute('aria-pressed', String(isLearnMode));
+  }
+
+  if (testModeButton) {
+    testModeButton.classList.toggle('active', !isLearnMode);
+    testModeButton.setAttribute('aria-pressed', String(!isLearnMode));
+  }
+}
+
+function clearTileSelection() {
+  document.querySelectorAll('.alphabet-tile.active, .alphabet-tile.revealed').forEach((tile) => {
+    tile.classList.remove('active', 'revealed');
+  });
+}
+
+function applyMode(nextMode) {
+  activeMode = nextMode === 'test' ? 'test' : 'learn';
+
+  if (alphabetLab) {
+    alphabetLab.dataset.mode = activeMode;
+  }
+
+  updateModeButtons();
+  clearTileSelection();
+
+  if (modeHint) {
+    modeHint.textContent = activeMode === 'test'
+      ? 'Test mode hides labels. Tap a letter tile to reveal its sound label and play audio.'
+      : 'Learning mode shows each tile with sound labels and pronunciation hints.';
+  }
+
+  if (activeMode === 'test') {
+    setSpotlight('?', 'Tap a tile to reveal', '');
+    setAudioStatus('Audio status: Test mode is on. Tap a letter tile to reveal and hear it.');
+  } else {
+    setSpotlight('ก', 'g', 'gaw');
+    setAudioStatus('Audio status: Tap a letter tile to hear its sound.');
+  }
+
+  try {
+    localStorage.setItem(MODE_STORAGE_KEY, activeMode);
+  } catch (e) {}
 }
 
 function playLetterAudio(audioFile, symbol) {
@@ -243,6 +299,13 @@ renderAlphabetGrid(vowelGridLong, longVowels);
 renderAlphabetGrid(vowelGridSpecial, specialVowels);
 buildQuestion();
 
+try {
+  const savedMode = localStorage.getItem(MODE_STORAGE_KEY);
+  applyMode(savedMode === 'test' ? 'test' : 'learn');
+} catch (e) {
+  applyMode('learn');
+}
+
 [consonantGrid, vowelGridShort, vowelGridLong, vowelGridSpecial].forEach((grid) => {
   if (!grid) {
     return;
@@ -254,15 +317,29 @@ buildQuestion();
       return;
     }
 
-    document.querySelectorAll('.alphabet-tile.active').forEach((activeTile) => {
-      activeTile.classList.remove('active');
-    });
+    clearTileSelection();
 
     tile.classList.add('active');
+    if (activeMode === 'test') {
+      tile.classList.add('revealed');
+    }
+
     setSpotlight(tile.dataset.letter || '', tile.dataset.name || '', tile.dataset.pron || '');
     playLetterAudio(tile.dataset.audio || '', tile.dataset.letter || '');
   });
 });
+
+if (learnModeButton) {
+  learnModeButton.addEventListener('click', () => {
+    applyMode('learn');
+  });
+}
+
+if (testModeButton) {
+  testModeButton.addEventListener('click', () => {
+    applyMode('test');
+  });
+}
 
 if (quizForm) {
   quizForm.addEventListener('submit', (event) => {
