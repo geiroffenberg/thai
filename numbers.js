@@ -42,13 +42,13 @@ const exceptions = [
 
 const tens = [
   { digit: '20', thai: 'ยี่สิบ',  rom: 'yii-sip',  audio: `${AUDIO_BASE}/20-yii-sip.mp3`, note: 'ยี่ not สอง' },
-  { digit: '30', thai: 'สามสิบ',  rom: 'saam-sip', audio: null },
-  { digit: '40', thai: 'สี่สิบ',  rom: 'sii-sip',  audio: null },
-  { digit: '50', thai: 'ห้าสิบ',  rom: 'haa-sip',  audio: null },
-  { digit: '60', thai: 'หกสิบ',   rom: 'hok-sip',  audio: null },
-  { digit: '70', thai: 'เจ็ดสิบ', rom: 'jet-sip',  audio: null },
-  { digit: '80', thai: 'แปดสิบ',  rom: 'paet-sip', audio: null },
-  { digit: '90', thai: 'เก้าสิบ', rom: 'gao-sip',  audio: null },
+  { digit: '30', thai: 'สามสิบ',  rom: 'saam-sip', audio: `${AUDIO_BASE}/30-saam-sip.mp3` },
+  { digit: '40', thai: 'สี่สิบ',  rom: 'sii-sip',  audio: `${AUDIO_BASE}/40-sii-sip.mp3` },
+  { digit: '50', thai: 'ห้าสิบ',  rom: 'haa-sip',  audio: `${AUDIO_BASE}/50-haa-sip.mp3` },
+  { digit: '60', thai: 'หกสิบ',   rom: 'hok-sip',  audio: `${AUDIO_BASE}/60-hok-sip.mp3` },
+  { digit: '70', thai: 'เจ็ดสิบ', rom: 'jet-sip',  audio: `${AUDIO_BASE}/70-jet-sip.mp3` },
+  { digit: '80', thai: 'แปดสิบ',  rom: 'paet-sip', audio: `${AUDIO_BASE}/80-paet-sip.mp3` },
+  { digit: '90', thai: 'เก้าสิบ', rom: 'gao-sip',  audio: `${AUDIO_BASE}/90-gao-sip.mp3` },
 ];
 
 const powers = [
