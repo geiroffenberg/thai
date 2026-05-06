@@ -12,10 +12,12 @@ const practiceAnswer = document.getElementById('practiceAnswer');
 const practiceThai   = document.getElementById('practiceThai');
 const practiceRom    = document.getElementById('practiceRom');
 const revealBtn      = document.getElementById('revealBtn');
+const playbackToggle = document.getElementById('playbackToggle');
 const nextNumBtn     = document.getElementById('nextNumBtn');
 
 const AUDIO_BASE   = '../audio/numbers';
 const NUM_MODE_KEY = 'thai-numbers-mode';
+const NUM_PLAYBACK_KEY = 'thai-numbers-playback-mode';
 
 // ─── Data ────────────────────────────────────────────────────────────────────
 
@@ -116,13 +118,127 @@ function buildThaiNumber(n) {
 // ─── Audio ───────────────────────────────────────────────────────────────────
 
 let currentAudio = null;
+let queuedAudios = [];
+let naturalSources = [];
+let naturalContext = null;
+const naturalBufferCache = new Map();
+const naturalAnalysisCache = new Map();
+
+const AUDIO = {
+  d1: `${AUDIO_BASE}/01-neung.mp3`,
+  d2: `${AUDIO_BASE}/02-song.mp3`,
+  d3: `${AUDIO_BASE}/03-saam.mp3`,
+  d4: `${AUDIO_BASE}/04-sii.mp3`,
+  d5: `${AUDIO_BASE}/05-haa.mp3`,
+  d6: `${AUDIO_BASE}/06-hok.mp3`,
+  d7: `${AUDIO_BASE}/07-jet.mp3`,
+  d8: `${AUDIO_BASE}/08-paet.mp3`,
+  d9: `${AUDIO_BASE}/09-gao.mp3`,
+  ten: `${AUDIO_BASE}/10-sip.mp3`,
+  et: `${AUDIO_BASE}/et.mp3`,
+  t20: `${AUDIO_BASE}/20-yii-sip.mp3`,
+  t30: `${AUDIO_BASE}/30-saam-sip.mp3`,
+  t40: `${AUDIO_BASE}/40-sii-sip.mp3`,
+  t50: `${AUDIO_BASE}/50-haa-sip.mp3`,
+  t60: `${AUDIO_BASE}/60-hok-sip.mp3`,
+  t70: `${AUDIO_BASE}/70-jet-sip.mp3`,
+  t80: `${AUDIO_BASE}/80-paet-sip.mp3`,
+  t90: `${AUDIO_BASE}/90-gao-sip.mp3`,
+  p100: `${AUDIO_BASE}/100-roi.mp3`,
+  p1000: `${AUDIO_BASE}/1000-phan.mp3`,
+  p10000: `${AUDIO_BASE}/10000-muen.mp3`,
+  p100000: `${AUDIO_BASE}/100000-saen.mp3`,
+  p1000000: `${AUDIO_BASE}/1000000-laan.mp3`,
+};
+
+function stopCurrentAudio() {
+  if (currentAudio) {
+    currentAudio.pause();
+    currentAudio.currentTime = 0;
+    currentAudio = null;
+  }
+  queuedAudios.forEach((a) => {
+    a.pause();
+    a.currentTime = 0;
+  });
+  queuedAudios = [];
+
+  naturalSources.forEach((src) => {
+    try {
+      src.stop();
+    } catch (e) {}
+  });
+  naturalSources = [];
+}
+
+function getNaturalContext() {
+  if (!naturalContext) {
+    const Ctx = window.AudioContext || window.webkitAudioContext;
+    if (!Ctx) return null;
+    naturalContext = new Ctx();
+  }
+  return naturalContext;
+}
+
+async function getAudioBuffer(audioFile) {
+  if (naturalBufferCache.has(audioFile)) return naturalBufferCache.get(audioFile);
+  const response = await fetch(audioFile);
+  if (!response.ok) throw new Error(`Failed to fetch ${audioFile}`);
+  const arrayBuffer = await response.arrayBuffer();
+  const ctx = getNaturalContext();
+  if (!ctx) throw new Error('Web Audio API not available');
+  const decoded = await ctx.decodeAudioData(arrayBuffer.slice(0));
+  naturalBufferCache.set(audioFile, decoded);
+  return decoded;
+}
+
+function getClipKind(audioFile) {
+  const name = audioFile.split('/').pop() || '';
+  if (/^0[1-9]-/.test(name)) return 'digit';
+  if (/^10-sip\.mp3$/.test(name)) return 'tens';
+  if (/^[2-9]0-.*\.mp3$/.test(name)) return 'tens';
+  if (/^1000000-|^100000-|^10000-|^1000-|^100-/.test(name)) return 'power';
+  if (/^et\.mp3$/.test(name)) return 'et';
+  return 'other';
+}
+
+function getBoundaryOverlap(prevKind, nextKind) {
+  if (prevKind === 'digit' && nextKind === 'power') return 0.20;
+  if (prevKind === 'tens' && (nextKind === 'digit' || nextKind === 'et')) return 0.14;
+  if (prevKind === 'power' && (nextKind === 'digit' || nextKind === 'tens')) return 0.08;
+  return 0.10;
+}
+
+function analyzeBufferVoiceWindow(buffer, key) {
+  if (naturalAnalysisCache.has(key)) return naturalAnalysisCache.get(key);
+
+  const channel = buffer.getChannelData(0);
+  const sampleRate = buffer.sampleRate;
+  const threshold = 0.015;
+  const minKeep = 0.04;
+  const pad = 0.01;
+
+  let start = 0;
+  while (start < channel.length && Math.abs(channel[start]) < threshold) start += 1;
+
+  let end = channel.length - 1;
+  while (end > start && Math.abs(channel[end]) < threshold) end -= 1;
+
+  const startSec = Math.max(0, start / sampleRate - pad);
+  const endSec = Math.min(buffer.duration, end / sampleRate + pad);
+  const durationSec = Math.max(minKeep, endSec - startSec);
+
+  const result = { startSec, durationSec };
+  naturalAnalysisCache.set(key, result);
+  return result;
+}
 
 function playAudio(audioFile, label) {
   if (!audioFile) {
     setAudioStatus(`No audio file recorded for "${label}" yet.`);
     return;
   }
-  if (currentAudio) { currentAudio.pause(); currentAudio.currentTime = 0; }
+  stopCurrentAudio();
   const audio = new Audio(audioFile);
   currentAudio = audio;
   setAudioStatus(`Loading ${label}…`);
@@ -134,6 +250,177 @@ function playAudio(audioFile, label) {
 
 function setAudioStatus(msg) {
   if (numAudioStatus) numAudioStatus.textContent = msg;
+}
+
+function pushDigitAndPower(clips, digit, powerClip) {
+  const digitMap = {
+    1: AUDIO.d1,
+    2: AUDIO.d2,
+    3: AUDIO.d3,
+    4: AUDIO.d4,
+    5: AUDIO.d5,
+    6: AUDIO.d6,
+    7: AUDIO.d7,
+    8: AUDIO.d8,
+    9: AUDIO.d9,
+  };
+  clips.push(digitMap[digit], powerClip);
+}
+
+function buildNumberAudioSequence(n) {
+  if (!Number.isFinite(n) || n <= 0) return [];
+
+  const clips = [];
+  const powersDef = [
+    { value: 1000000, clip: AUDIO.p1000000 },
+    { value: 100000, clip: AUDIO.p100000 },
+    { value: 10000, clip: AUDIO.p10000 },
+    { value: 1000, clip: AUDIO.p1000 },
+    { value: 100, clip: AUDIO.p100 },
+  ];
+
+  let rest = n;
+  for (const p of powersDef) {
+    const d = Math.floor(rest / p.value);
+    if (d > 0 && d <= 9) {
+      pushDigitAndPower(clips, d, p.clip);
+      rest %= p.value;
+    }
+  }
+
+  if (rest >= 10) {
+    const t = Math.floor(rest / 10);
+    const u = rest % 10;
+    const tensMap = {
+      1: AUDIO.ten,
+      2: AUDIO.t20,
+      3: AUDIO.t30,
+      4: AUDIO.t40,
+      5: AUDIO.t50,
+      6: AUDIO.t60,
+      7: AUDIO.t70,
+      8: AUDIO.t80,
+      9: AUDIO.t90,
+    };
+    clips.push(tensMap[t]);
+    if (u === 1) clips.push(AUDIO.et);
+    else if (u > 1) {
+      const unitMap = {
+        2: AUDIO.d2,
+        3: AUDIO.d3,
+        4: AUDIO.d4,
+        5: AUDIO.d5,
+        6: AUDIO.d6,
+        7: AUDIO.d7,
+        8: AUDIO.d8,
+        9: AUDIO.d9,
+      };
+      clips.push(unitMap[u]);
+    }
+  } else if (rest > 0) {
+    const unitMap = {
+      1: AUDIO.d1,
+      2: AUDIO.d2,
+      3: AUDIO.d3,
+      4: AUDIO.d4,
+      5: AUDIO.d5,
+      6: AUDIO.d6,
+      7: AUDIO.d7,
+      8: AUDIO.d8,
+      9: AUDIO.d9,
+    };
+    clips.push(unitMap[rest]);
+  }
+
+  return clips.filter(Boolean);
+}
+
+function playAudioSequence(audioFiles, label) {
+  if (!audioFiles.length) {
+    setAudioStatus(`No composed audio available for ${label}.`);
+    return;
+  }
+
+  stopCurrentAudio();
+  const queue = audioFiles.map((f) => new Audio(f));
+  queuedAudios = queue;
+  let index = 0;
+
+  const playNext = () => {
+    if (index >= queue.length) {
+      currentAudio = null;
+      queuedAudios = [];
+      setAudioStatus(`Played ${label}.`);
+      return;
+    }
+    const audio = queue[index];
+    currentAudio = audio;
+    audio.addEventListener('ended', () => {
+      index += 1;
+      playNext();
+    }, { once: true });
+    audio.play()
+      .then(() => setAudioStatus(`Playing ${label} (${index + 1}/${queue.length})`))
+      .catch(() => setAudioStatus(`Could not play ${label}. Missing or blocked audio.`));
+  };
+
+  playNext();
+}
+
+async function playAudioSequenceNatural(audioFiles, label) {
+  if (!audioFiles.length) {
+    setAudioStatus(`No composed audio available for ${label}.`);
+    return;
+  }
+
+  const ctx = getNaturalContext();
+  if (!ctx) {
+    setAudioStatus('Natural speed is not supported in this browser.');
+    return;
+  }
+
+  stopCurrentAudio();
+
+  try {
+    if (ctx.state === 'suspended') await ctx.resume();
+
+    setAudioStatus(`Loading natural audio for ${label}…`);
+    const parts = [];
+    for (const file of audioFiles) {
+      const buffer = await getAudioBuffer(file);
+      const window = analyzeBufferVoiceWindow(buffer, file);
+      parts.push({ file, buffer, ...window, kind: getClipKind(file) });
+    }
+
+    const playbackRate = 1.0;
+    let nextStart = ctx.currentTime + 0.04;
+
+    parts.forEach((part, index) => {
+      const src = ctx.createBufferSource();
+      src.buffer = part.buffer;
+      src.playbackRate.value = playbackRate;
+      src.connect(ctx.destination);
+      src.start(nextStart, part.startSec, part.durationSec);
+      naturalSources.push(src);
+
+      const adjustedDuration = part.durationSec / playbackRate;
+      const nextKind = index < parts.length - 1 ? parts[index + 1].kind : 'other';
+      const overlapSeconds = getBoundaryOverlap(part.kind, nextKind);
+      nextStart += Math.max(0.06, adjustedDuration - overlapSeconds);
+
+      if (index === parts.length - 1) {
+        src.addEventListener('ended', () => {
+          naturalSources = [];
+          setAudioStatus(`Played ${label} (natural speed).`);
+        }, { once: true });
+      }
+    });
+
+    setAudioStatus(`Playing ${label} (natural speed)`);
+  } catch (err) {
+    naturalSources = [];
+    setAudioStatus(`Could not play natural speed for ${label}.`);
+  }
 }
 
 // ─── Tile rendering ──────────────────────────────────────────────────────────
@@ -197,6 +484,19 @@ function applyMode(nextMode) {
 
 let selectedDigits = 2;
 let currentPracticeNumber = 0;
+let lastPracticeAudioClips = [];
+let lastPracticeAudioLabel = '';
+let preferredPlayback = 'clear';
+
+function setPreferredPlayback(mode) {
+  preferredPlayback = mode === 'natural' ? 'natural' : 'clear';
+  try { localStorage.setItem(NUM_PLAYBACK_KEY, preferredPlayback); } catch (e) {}
+}
+
+function applyPlaybackPreference(mode) {
+  setPreferredPlayback(mode);
+  if (playbackToggle) playbackToggle.checked = preferredPlayback === 'natural';
+}
 
 function randomForDigits(d) {
   const min = Math.pow(10, d - 1);
@@ -213,16 +513,35 @@ function newPracticeNumber() {
   if (practiceNumber) practiceNumber.textContent = formatDisplay(currentPracticeNumber);
   if (practiceAnswer) practiceAnswer.classList.add('hidden');
   if (revealBtn) revealBtn.disabled = false;
+  lastPracticeAudioClips = [];
+  lastPracticeAudioLabel = '';
   setAudioStatus('');
 }
 
 function revealAnswer() {
-  const result = buildThaiNumber(currentPracticeNumber);
-  if (practiceThai) practiceThai.textContent = result.thai;
-  if (practiceRom)  practiceRom.textContent  = result.rom;
-  if (practiceAnswer) practiceAnswer.classList.remove('hidden');
-  if (revealBtn) revealBtn.disabled = true;
-  setAudioStatus('Audio for combined numbers coming when audio files are added.');
+  const isAlreadyRevealed = practiceAnswer && !practiceAnswer.classList.contains('hidden');
+
+  if (!isAlreadyRevealed) {
+    const result = buildThaiNumber(currentPracticeNumber);
+    if (practiceThai) practiceThai.textContent = result.thai;
+    if (practiceRom)  practiceRom.textContent  = result.rom;
+    if (practiceAnswer) practiceAnswer.classList.remove('hidden');
+    const clips = buildNumberAudioSequence(currentPracticeNumber);
+    const label = `${formatDisplay(currentPracticeNumber)} — ${result.thai}`;
+    lastPracticeAudioClips = clips;
+    lastPracticeAudioLabel = label;
+  }
+
+  if (!lastPracticeAudioClips.length) {
+    setAudioStatus('No composed audio available for this number yet.');
+    return;
+  }
+
+  if (preferredPlayback === 'natural') {
+    playAudioSequenceNatural(lastPracticeAudioClips, lastPracticeAudioLabel || 'number');
+  } else {
+    playAudioSequence(lastPracticeAudioClips, lastPracticeAudioLabel || 'number');
+  }
 }
 
 // ─── Init ────────────────────────────────────────────────────────────────────
@@ -237,6 +556,13 @@ try {
   applyMode(saved === 'test' ? 'test' : 'learn');
 } catch (e) {
   applyMode('learn');
+}
+
+try {
+  const savedPlayback = localStorage.getItem(NUM_PLAYBACK_KEY);
+  applyPlaybackPreference(savedPlayback === 'natural' ? 'natural' : 'clear');
+} catch (e) {
+  applyPlaybackPreference('clear');
 }
 
 newPracticeNumber();
@@ -256,6 +582,9 @@ document.querySelectorAll('.digit-btn').forEach((btn) => {
 });
 
 if (revealBtn)  revealBtn.addEventListener('click',  revealAnswer);
+if (playbackToggle) playbackToggle.addEventListener('change', () => {
+  applyPlaybackPreference(playbackToggle.checked ? 'natural' : 'clear');
+});
 if (nextNumBtn) nextNumBtn.addEventListener('click',  newPracticeNumber);
 
 ['grid1to10', 'gridExceptions', 'gridTens', 'gridPowers'].forEach((id) => {

@@ -998,7 +998,66 @@ main {
 
 .practice-actions {
   display: flex;
+  align-items: center;
   gap: 0.55rem;
+}
+
+.playback-toggle-wrap {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.38rem;
+  padding: 0.22rem 0.48rem;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  background: rgba(255, 255, 255, 0.06);
+}
+
+.toggle-label {
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  color: var(--muted);
+}
+
+.playback-toggle {
+  position: relative;
+  display: inline-flex;
+  width: 42px;
+  height: 22px;
+}
+
+.playback-toggle input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.toggle-slider {
+  position: absolute;
+  inset: 0;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.22);
+  transition: background-color 0.2s ease;
+}
+
+.toggle-slider::before {
+  content: '';
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: #fff;
+  transition: transform 0.2s ease;
+}
+
+.playback-toggle input:checked + .toggle-slider {
+  background: rgba(124, 199, 255, 0.55);
+}
+
+.playback-toggle input:checked + .toggle-slider::before {
+  transform: translateX(20px);
 }
 
 .practice-btn {
