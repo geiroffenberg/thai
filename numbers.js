@@ -118,7 +118,7 @@ function buildThaiNumber(n) {
 // ─── Audio ───────────────────────────────────────────────────────────────────
 
 let currentAudio = null;
-let queuedAudios = [];
+let clearSources = [];
 let naturalSources = [];
 let naturalContext = null;
 const naturalBufferCache = new Map();
@@ -153,15 +153,19 @@ const AUDIO = {
 
 function stopCurrentAudio() {
   if (currentAudio) {
-    currentAudio.pause();
-    currentAudio.currentTime = 0;
+    if (typeof currentAudio.pause === 'function') {
+      currentAudio.pause();
+      currentAudio.currentTime = 0;
+    }
     currentAudio = null;
   }
-  queuedAudios.forEach((a) => {
-    a.pause();
-    a.currentTime = 0;
+
+  clearSources.forEach((src) => {
+    try {
+      src.stop();
+    } catch (e) {}
   });
-  queuedAudios = [];
+  clearSources = [];
 
   naturalSources.forEach((src) => {
     try {
@@ -238,14 +242,7 @@ function playAudio(audioFile, label) {
     setAudioStatus(`No audio file recorded for "${label}" yet.`);
     return;
   }
-  stopCurrentAudio();
-  const audio = new Audio(audioFile);
-  currentAudio = audio;
-  setAudioStatus(`Loading ${label}…`);
-  audio.addEventListener('ended', () => setAudioStatus(`Played ${label}. Tap another number.`));
-  audio.play()
-    .then(() => setAudioStatus(`Playing ${label}`))
-    .catch(() => setAudioStatus(`Could not play ${label}. Audio file not available yet.`));
+  playAudioSequence([audioFile], label);
 }
 
 function setAudioStatus(msg) {
@@ -341,30 +338,58 @@ function playAudioSequence(audioFiles, label) {
     return;
   }
 
-  stopCurrentAudio();
-  const queue = audioFiles.map((f) => new Audio(f));
-  queuedAudios = queue;
-  let index = 0;
+  const ctx = getNaturalContext();
+  if (!ctx) {
+    setAudioStatus('Audio playback is not supported in this browser.');
+    return;
+  }
 
-  const playNext = () => {
-    if (index >= queue.length) {
+  stopCurrentAudio();
+
+  const run = async () => {
+    try {
+      if (ctx.state === 'suspended') await ctx.resume();
+
+      setAudioStatus(`Loading ${label}…`);
+      const parts = [];
+      for (const file of audioFiles) {
+        const buffer = await getAudioBuffer(file);
+        const window = analyzeBufferVoiceWindow(buffer, `clear:${file}`);
+        parts.push({ file, buffer, ...window });
+      }
+
+      let nextStart = ctx.currentTime + 0.03;
+      const interClipGap = 0.02;
+
+      parts.forEach((part, index) => {
+        const src = ctx.createBufferSource();
+        src.buffer = part.buffer;
+        src.playbackRate.value = 1.0;
+        src.connect(ctx.destination);
+        src.start(nextStart, part.startSec, part.durationSec);
+        clearSources.push(src);
+        currentAudio = src;
+
+        nextStart += part.durationSec + interClipGap;
+
+        if (index === parts.length - 1) {
+          src.addEventListener('ended', () => {
+            currentAudio = null;
+            clearSources = [];
+            setAudioStatus(`Played ${label}.`);
+          }, { once: true });
+        }
+      });
+
+      setAudioStatus(`Playing ${label}`);
+    } catch (err) {
+      clearSources = [];
       currentAudio = null;
-      queuedAudios = [];
-      setAudioStatus(`Played ${label}.`);
-      return;
+      setAudioStatus(`Could not play ${label}. Missing or blocked audio.`);
     }
-    const audio = queue[index];
-    currentAudio = audio;
-    audio.addEventListener('ended', () => {
-      index += 1;
-      playNext();
-    }, { once: true });
-    audio.play()
-      .then(() => setAudioStatus(`Playing ${label} (${index + 1}/${queue.length})`))
-      .catch(() => setAudioStatus(`Could not play ${label}. Missing or blocked audio.`));
   };
 
-  playNext();
+  run();
 }
 
 async function playAudioSequenceNatural(audioFiles, label) {
