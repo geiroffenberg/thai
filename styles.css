@@ -1250,6 +1250,369 @@ main {
   gap: 0.5rem;
 }
 
+/* --- Tenses page --- */
+
+.tenses-layout {
+  display: grid;
+  grid-template-columns: 1fr 380px;
+  gap: 1.8rem;
+}
+
+.tenses-main {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.tenses-side {
+  position: sticky;
+  top: 1.5rem;
+  height: fit-content;
+}
+
+.tense-insight {
+  background: linear-gradient(135deg, rgba(232, 163, 61, 0.1), rgba(63, 167, 150, 0.1));
+  border: 1px solid var(--gold);
+  border-radius: 12px;
+  padding: 1.2rem 1.4rem;
+}
+
+.tense-insight h3 {
+  margin: 0 0 0.8rem;
+  font-size: 1.1rem;
+  color: var(--thai-red);
+}
+
+.tense-insight p {
+  margin: 0;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: var(--text);
+}
+
+.tense-insight em {
+  font-style: italic;
+  color: var(--thai-navy);
+}
+
+.tense-insight strong {
+  font-weight: 600;
+  color: var(--thai-red);
+}
+
+.tense-section {
+  border-radius: 12px;
+  padding: 1.3rem;
+}
+
+.tense-section h3 {
+  margin: 0 0 0.4rem;
+  font-size: 1.2rem;
+  color: var(--thai-red);
+}
+
+.tense-note {
+  margin: 0.6rem 0 1rem;
+  font-size: 0.95rem;
+  color: var(--muted);
+  line-height: 1.5;
+}
+
+.tense-note strong {
+  color: var(--text);
+  font-weight: 600;
+}
+
+/* Tense Card Grid */
+.tense-cards {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+  margin: 1rem 0;
+}
+
+.tense-cards-sm {
+  grid-template-columns: 1fr;
+  margin: 0.8rem 0;
+}
+
+.tense-card {
+  background: var(--surface);
+  border: 1px solid var(--card-border);
+  border-radius: 10px;
+  padding: 1rem;
+  transition: all 0.3s ease;
+}
+
+.tense-card:hover {
+  box-shadow: var(--card-shadow-hover);
+  border-color: var(--thai-navy);
+}
+
+.tense-card-compact {
+  padding: 0.75rem;
+}
+
+.tense-header {
+  margin-bottom: 0.7rem;
+  border-bottom: 1px solid var(--card-border);
+  padding-bottom: 0.6rem;
+}
+
+.tense-name {
+  margin: 0;
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--thai-red);
+}
+
+.tense-name-sm {
+  margin: 0;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--thai-navy);
+}
+
+.tense-english {
+  margin: 0.3rem 0 0;
+  font-size: 0.85rem;
+  color: var(--muted);
+  font-style: italic;
+}
+
+.structure-label {
+  margin: 0;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.structure-text {
+  margin: 0.3rem 0 0.8rem;
+  font-size: 0.9rem;
+  color: var(--text);
+  font-weight: 500;
+  font-family: "Orbitron", monospace;
+}
+
+.tense-content {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.tense-helper {
+  display: inline-flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  font-size: 0.85rem;
+  padding: 0.5rem 0.7rem;
+  background: rgba(200, 35, 60, 0.08);
+  border-radius: 6px;
+  color: var(--text);
+}
+
+.helper-label {
+  font-weight: 600;
+  color: var(--thai-red);
+}
+
+.helper-thai {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--thai-red);
+}
+
+.helper-rom {
+  font-size: 0.8rem;
+  color: var(--muted);
+  font-style: italic;
+}
+
+.helper-meaning {
+  font-size: 0.8rem;
+  color: var(--muted);
+}
+
+.tense-example {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  padding: 0.6rem;
+  background: var(--surface-2);
+  border-radius: 6px;
+  border-left: 3px solid var(--jade);
+}
+
+.example-thai {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--thai-navy);
+  letter-spacing: 0.3px;
+}
+
+.example-rom {
+  font-size: 0.85rem;
+  color: var(--muted);
+  font-style: italic;
+}
+
+.tense-note-small {
+  margin: 0.6rem 0 0;
+  font-size: 0.8rem;
+  color: var(--muted);
+  line-height: 1.4;
+  font-style: italic;
+}
+
+/* Verb Selector */
+.verb-selector {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0.6rem;
+  margin: 1rem 0 1.2rem;
+}
+
+.verb-btn {
+  padding: 0.7rem 0.5rem;
+  background: var(--surface-2);
+  border: 2px solid transparent;
+  border-radius: 8px;
+  color: var(--text);
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.verb-btn:hover {
+  border-color: var(--thai-navy);
+}
+
+.verb-btn.active {
+  background: var(--thai-navy);
+  color: #ffffff;
+  border-color: var(--thai-navy);
+}
+
+/* Tense Practice Panel */
+.tenses-side h3 {
+  margin: 0 0 0.4rem;
+  font-size: 1.1rem;
+  color: var(--thai-red);
+}
+
+.practice-lead {
+  margin: 0.4rem 0 0.8rem;
+  font-size: 0.9rem;
+  color: var(--muted);
+  font-weight: 600;
+}
+
+.practice-prompt {
+  margin: 0 0 0.8rem;
+  font-size: 0.95rem;
+  color: var(--text);
+  font-weight: 500;
+}
+
+.tense-answer {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+  padding: 1rem;
+  background: var(--surface-2);
+  border: 1px solid var(--card-border);
+  border-radius: 8px;
+  margin: 0.8rem 0;
+}
+
+.tense-answer.hidden {
+  display: none;
+}
+
+.tense-breakdown {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.6rem;
+  font-size: 0.9rem;
+}
+
+.breakdown-part {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.2rem;
+  padding: 0.5rem 0.6rem;
+  background: var(--surface);
+  border: 1px solid var(--card-border);
+  border-radius: 6px;
+  min-width: 60px;
+}
+
+.breakdown-thai {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--thai-navy);
+}
+
+.breakdown-rom {
+  font-size: 0.75rem;
+  color: var(--muted);
+  font-style: italic;
+}
+
+.breakdown-sep {
+  color: var(--muted);
+  font-weight: 300;
+  margin: 0 0.2rem;
+}
+
+.verb-part .breakdown-thai {
+  color: var(--thai-red);
+}
+
+.helper-part .breakdown-thai {
+  color: var(--jade);
+}
+
+.object-part .breakdown-thai {
+  color: var(--thai-navy);
+}
+
+.tense-explanation {
+  font-size: 0.85rem;
+  color: var(--text);
+  line-height: 1.5;
+  margin: 0;
+}
+
+.tense-explanation strong {
+  color: var(--thai-navy);
+  font-weight: 600;
+}
+
+.tense-explanation em {
+  color: var(--muted);
+  font-style: italic;
+}
+
+.audio-note {
+  margin: 0.5rem 0;
+  font-size: 0.8rem;
+  color: var(--muted);
+  font-style: italic;
+}
+
+.hidden-answer {
+  opacity: 0.6;
+}
+
+/* Responsive */
 @media (max-width: 880px) {
   .about-layout {
     grid-template-columns: 1fr;
@@ -1258,5 +1621,23 @@ main {
   .tones-grid,
   .word-build-grid {
     grid-template-columns: 1fr;
+  }
+
+  .tenses-layout {
+    grid-template-columns: 1fr;
+    gap: 1.2rem;
+  }
+
+  .tenses-side {
+    position: static;
+    top: auto;
+  }
+
+  .tense-cards {
+    grid-template-columns: 1fr;
+  }
+
+  .verb-selector {
+    grid-template-columns: repeat(2, 1fr);
   }
 }
