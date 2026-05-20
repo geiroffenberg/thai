@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Phrases — Learn Thai with Saiman</title>
+    <title>Thai Phrases — Learn Thai with Saiman</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -42,32 +42,36 @@
 
       <div class="hero-content">
         <p class="kicker">MODULE 04</p>
-        <h1>How To Speak Phrases</h1>
-        <p class="subtitle">Use these common phrase patterns and swap in your own words.</p>
+        <h1>Thai Phrases Lab</h1>
+        <p class="subtitle">
+          Learn 100 essential phrases. Use Test Mode to hide hints and self-check pronunciation.
+        </p>
       </div>
     </header>
 
     <main>
-      <section class="section">
-        <div class="grid phrase-grid">
-          <article class="card phrase-card">
-            <h3>Introducing Yourself</h3>
-            <p><strong>ฉันชื่อ...</strong> (chan cheu...) - My name is...</p>
-            <button class="speak-btn" data-phrase="ฉันชื่อ">Hear it</button>
-          </article>
+      <section class="section phrases-lab" id="phrases-lab">
+        <div class="mode-controls-wrap">
+          <div>
+            <p class="mode-switch-label">Study Mode</p>
+            <div class="mode-switch" role="group" aria-label="Phrases study mode">
+              <button type="button" class="mode-btn active" id="learnModeBtn" aria-pressed="true">Learning Mode</button>
+              <button type="button" class="mode-btn" id="testModeBtn" aria-pressed="false">Test Mode</button>
+            </div>
+          </div>
 
-          <article class="card phrase-card">
-            <h3>Asking Price</h3>
-            <p><strong>อันนี้เท่าไหร่</strong> (an nee tao rai?) - How much is this?</p>
-            <button class="speak-btn" data-phrase="อันนี้เท่าไหร่">Hear it</button>
-          </article>
-
-          <article class="card phrase-card">
-            <h3>Ordering Food</h3>
-            <p><strong>ขอ...หนึ่งที่</strong> (kho... neung tee) - I would like one...</p>
-            <button class="speak-btn" data-phrase="ขอหนึ่งที่">Hear it</button>
-          </article>
+          <div>
+            <p class="mode-switch-label">Speaker</p>
+            <div class="mode-switch" role="group" aria-label="Speaker gender">
+              <button type="button" class="mode-btn active" id="maleBtn" aria-pressed="true">Male</button>
+              <button type="button" class="mode-btn" id="femaleBtn" aria-pressed="false">Female</button>
+            </div>
+          </div>
         </div>
+
+        <p class="mode-hint" id="modeHint">Learning mode shows each phrase with English translation and phonetics. Test mode hides hints—click a card to reveal.</p>
+
+        <div class="phrases-container" id="phrasesContainer" aria-label="Thai phrases cards"></div>
       </section>
     </main>
 
@@ -77,5 +81,6 @@
     </footer>
 
     <script src="../script.js"></script>
+    <script src="../phrases.js"></script>
   </body>
 </html>
