@@ -16,6 +16,19 @@ const GENDER_KEY = 'PHRASE_GENDER';
 // State
 let isLearnMode = localStorage.getItem(LEARN_MODE_KEY) !== 'false';
 let currentGender = localStorage.getItem(GENDER_KEY) || 'male'; // 'male' or 'female'
+let currentAudio = null; // currently playing Audio instance
+
+const AUDIO_BASE = '../audio/phrases/';
+
+// Play a phrase audio file; stops any previously playing clip first
+function playPhrase(audioFile) {
+  if (currentAudio) {
+    currentAudio.pause();
+    currentAudio.currentTime = 0;
+  }
+  currentAudio = new Audio(AUDIO_BASE + audioFile);
+  currentAudio.play().catch(() => {}); // ignore AbortError on rapid re-clicks
+}
 
 // Fetch and load phrases
 async function loadPhrases() {
@@ -95,8 +108,10 @@ function createPhraseCard(phrase) {
   // Get current gender version
   const genderData = currentGender === 'male' ? phrase.male : phrase.female;
 
+  card.style.cursor = 'pointer';
+
   if (isLearnMode) {
-    // Learning mode: show all info
+    // Learning mode: show all info; tap card to play audio
     card.innerHTML = `
       <div class="phrase-content">
         <div class="thai-text">${genderData.thai}</div>
@@ -105,8 +120,9 @@ function createPhraseCard(phrase) {
         <div class="explanation">${phrase.explanation}</div>
       </div>
     `;
+    card.addEventListener('click', () => playPhrase(genderData.audio_file));
   } else {
-    // Test mode: show only English, click to reveal
+    // Test mode: tap to reveal; once revealed, tap again to play audio
     card.classList.add('test-mode');
     card.innerHTML = `
       <div class="phrase-content hidden-content">
@@ -119,14 +135,14 @@ function createPhraseCard(phrase) {
         <div class="explanation">${phrase.explanation}</div>
       </div>
     `;
-
-    // Add click handler for reveal
     card.addEventListener('click', () => {
       const hidden = card.querySelector('.hidden-content');
       const revealed = card.querySelector('.revealed-content');
-      if (hidden && revealed) {
-        hidden.style.display = hidden.style.display === 'none' ? 'block' : 'none';
-        revealed.style.display = revealed.style.display === 'none' ? 'block' : 'none';
+      if (revealed.style.display === 'none') {
+        hidden.style.display = 'none';
+        revealed.style.display = 'block';
+      } else {
+        playPhrase(genderData.audio_file);
       }
     });
   }
