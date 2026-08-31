@@ -1772,3 +1772,112 @@ main {
     grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
   }
 }
+
+/* --- Vocabulary page --- */
+
+.vocab-lab {
+  animation: rise 0.55s ease;
+}
+
+.vocab-container {
+  display: block;
+}
+
+/* Section divider between grammatical categories */
+.vocab-container .category-header {
+  margin: 1.8rem 0 0.9rem;
+  font-size: 0.9rem;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  color: var(--muted);
+  padding: 0 0.5rem;
+}
+
+.vocab-container .category-header:first-child {
+  margin-top: 0;
+}
+
+/* Cards flow side-by-side in rows (same as phrases page), so words pack
+   together instead of leaving a big vertical gap after each entry. */
+.vocab-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 1.1rem;
+  margin-bottom: 1.1rem;
+}
+
+.vocab-card {
+  cursor: pointer;
+  transition: all 0.2s ease;
+  min-height: 150px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border-left: 4px solid var(--gold);
+}
+
+.vocab-card:hover {
+  box-shadow: var(--card-shadow-hover);
+  transform: translateY(-2px);
+}
+
+.vocab-card.test-mode {
+  background: linear-gradient(165deg, #ffffff, var(--surface-2));
+  border-left-color: var(--thai-navy);
+}
+
+.vocab-content {
+  display: flex;
+  flex-direction: column;
+  gap: 0.55rem;
+  font-size: 0.95rem;
+  line-height: 1.35;
+  text-align: center;
+}
+
+.vocab-thai {
+  font-size: 1.7rem;
+  font-weight: 700;
+  color: var(--thai-red);
+  word-break: break-word;
+  line-height: 1.15;
+}
+
+.vocab-phon {
+  font-size: 0.88rem;
+  color: var(--text);
+  font-style: italic;
+  font-weight: 500;
+}
+
+.vocab-english {
+  font-size: 1.02rem;
+  font-weight: 700;
+  color: var(--thai-navy);
+  margin-top: 0.2rem;
+}
+
+/* Test mode — English shown first, tap to reveal Thai */
+.vocab-english-primary {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--thai-navy);
+  min-height: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  word-break: break-word;
+}
+
+.vocab-card.test-mode .hidden-content,
+.vocab-card.test-mode .revealed-content {
+  transition: opacity 0.3s ease;
+}
+
+@media (max-width: 880px) {
+  .vocab-grid {
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  }
+}

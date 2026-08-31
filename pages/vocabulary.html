@@ -42,30 +42,32 @@
 
       <div class="hero-content">
         <p class="kicker">MODULE 03</p>
-        <h1>Vocabulary Themes</h1>
+        <h1>Core Vocabulary</h1>
         <p class="subtitle">
-          Practice grouped vocabulary to remember faster. Focus on one theme per day.
+          The 100 most common words in daily Thai. Tap any card in Learning Mode to hear it; switch to Test Mode to self-check.
         </p>
       </div>
     </header>
 
     <main>
-      <section class="section split">
-        <div>
-          <div class="chips">
-            <span>Food: ข้าว (rice), น้ำ (water), กาแฟ (coffee)</span>
-            <span>Travel: รถไฟ (train), สนามบิน (airport), ถนน (road)</span>
-            <span>Family: แม่ (mother), พ่อ (father), เพื่อน (friend)</span>
+      <section class="section vocab-lab" id="vocab-lab">
+        <div class="mode-controls-wrap">
+          <div>
+            <p class="mode-switch-label">Study Mode</p>
+            <div class="mode-switch" role="group" aria-label="Vocabulary study mode">
+              <button type="button" class="mode-btn active" id="vocabLearnModeBtn" aria-pressed="true">Learning Mode</button>
+              <button type="button" class="mode-btn" id="vocabTestModeBtn" aria-pressed="false">Test Mode</button>
+            </div>
           </div>
         </div>
 
-        <aside class="card practice-panel">
-          <h3>Mini Practice</h3>
-          <p>Click a phrase to hear and repeat. Great for pronunciation rhythm.</p>
-          <button class="speak-btn" data-phrase="สวัสดีครับ">สวัสดีครับ</button>
-          <button class="speak-btn" data-phrase="ขอบคุณมาก">ขอบคุณมาก</button>
-          <button class="speak-btn" data-phrase="ฉันเรียนภาษาไทย">ฉันเรียนภาษาไทย</button>
-        </aside>
+        <p class="mode-hint" id="vocabModeHint">
+          Learning mode shows each word with Thai script, phonetic tones, and English meaning. Test mode hides hints—tap a card to reveal, then tap again to hear it.
+        </p>
+
+        <p class="audio-note" id="vocabAudioStatus" role="status"></p>
+
+        <div class="vocab-container" id="vocabContainer" aria-label="Thai vocabulary cards"></div>
       </section>
     </main>
 
@@ -75,5 +77,6 @@
     </footer>
 
     <script src="../script.js"></script>
+    <script src="../vocabulary.js"></script>
   </body>
 </html>
