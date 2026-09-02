@@ -45,28 +45,156 @@
         <h1>Thai Tone Trainer</h1>
         <p class="subtitle">
           Tones are meaning. Same consonants and vowels can become different words when your voice moves.
+          Learn the shape of each tone, then the rules that decide it.
         </p>
       </div>
     </header>
 
     <main>
       <section class="section tones-grid">
-        <article class="card glow-pink">
-          <h3>The 5 Thai Tones</h3>
-          <ul>
-            <li><strong>Mid</strong> (เสียงสามัญ): steady, level voice</li>
-            <li><strong>Low</strong> (เสียงเอก): starts mid and drops lower</li>
-            <li><strong>Falling</strong> (เสียงโท): starts high and falls</li>
-            <li><strong>High</strong> (เสียงตรี): starts higher and stays high</li>
-            <li><strong>Rising</strong> (เสียงจัตวา): starts low and rises up</li>
-          </ul>
-          <p class="tone-note">
-            Important: tone marks help, but final tone also depends on consonant class and whether the syllable is open or closed.
+
+        <!-- 1. INTERACTIVE PITCH CONTOUR MAP -->
+        <article class="card glow-pink tone-visual">
+          <h3>The 5 Tone Shapes — See Them, Hear Them</h3>
+          <p class="tone-cost">
+            Each line shows how your <em>pitch moves</em>. Match the bounce with your voice — Thai has 5 of them.
+          </p>
+          <div class="tone-list">
+
+            <div class="tone-row t-mid" id="tone-mid">
+              <div class="tone-head">
+                <span class="tone-en">Mid &nbsp;เสียงสามัญ</span>
+                <span class="tone-th">samman — steady, level</span>
+              </div>
+              <div class="pitch-wrap">
+                <svg class="pitch-svg" viewBox="0 0 200 60" preserveAspectRatio="none" aria-hidden="true">
+                  <path d="M 8 30 L 192 30" class="pitch-glow" />
+                  <path d="M 8 30 L 192 30" class="pitch-line" />
+                </svg>
+              </div>
+              <button type="button" class="tone-speak" data-audio-file="ma-mid.mp3" aria-label="Mid tone: มา com">
+                มา<span class="tone-coming">coming soon</span>
+              </button>
+            </div>
+
+            <div class="tone-row t-low" id="tone-low">
+              <div class="tone-head">
+                <span class="tone-en">Low &nbsp;เสียงเอก</span>
+                <span class="tone-th">ayk — drops and stays low</span>
+              </div>
+              <div class="pitch-wrap">
+                <svg class="pitch-svg" viewBox="0 0 200 60" preserveAspectRatio="none" aria-hidden="true">
+                  <path d="M 8 22 L 150 44 L 192 44" class="pitch-glow" />
+                  <path d="M 8 22 L 150 44 L 192 44" class="pitch-line" />
+                </svg>
+              </div>
+              <button type="button" class="tone-speak" data-audio-file="ma-low.mp3" aria-label="Low tone: หม่า">หม่า<span class="tone-coming">coming soon</span></button>
+            </div>
+
+            <div class="tone-row t-falling" id="tone-falling">
+              <div class="tone-head">
+                <span class="tone-en">Falling &nbsp;เสียงโท</span>
+                <span class="tone-th">tho — starts high, drops hard</span>
+              </div>
+              <div class="pitch-wrap">
+                <svg class="pitch-svg" viewBox="0 0 200 60" preserveAspectRatio="none" aria-hidden="true">
+                  <path d="M 8 14 L 160 46 L 192 46" class="pitch-glow" />
+                  <path d="M 8 14 L 160 46 L 192 46" class="pitch-line" />
+                </svg>
+              </div>
+              <button type="button" class="tone-speak" data-audio-file="ma-falling.mp3" aria-label="Falling tone: ม้า horse">ม้า<span class="tone-coming">coming soon</span></button>
+            </div>
+
+            <div class="tone-row t-high" id="tone-high">
+              <div class="tone-head">
+                <span class="tone-en">High &nbsp;เสียงตรี</span>
+                <span class="tone-th">tree — high and stays up</span>
+              </div>
+              <div class="pitch-wrap">
+                <svg class="pitch-svg" viewBox="0 0 200 60" preserveAspectRatio="none" aria-hidden="true">
+                  <path d="M 8 16 L 170 18 L 192 16" class="pitch-glow" />
+                  <path d="M 8 16 L 170 18 L 192 16" class="pitch-line" />
+                </svg>
+              </div>
+              <button type="button" class="tone-speak" data-audio-file="ma-high.mp3" aria-label="High tone: ม๊า">ม๊า<span class="tone-coming">coming soon</span></button>
+            </div>
+
+            <div class="tone-row t-rising" id="tone-rising">
+              <div class="tone-head">
+                <span class="tone-en">Rising &nbsp;เสียงจัตวา</span>
+                <span class="tone-th">chatawaa — climbs like a question</span>
+              </div>
+              <div class="pitch-wrap">
+                <svg class="pitch-svg" viewBox="0 0 200 60" preserveAspectRatio="none" aria-hidden="true">
+                  <path d="M 8 46 L 150 14 L 192 16" class="pitch-glow" />
+                  <path d="M 8 46 L 150 14 L 192 16" class="pitch-line" />
+                </svg>
+              </div>
+              <button type="button" class="tone-speak" data-audio-file="ma-rising.mp3" aria-label="Rising tone: หมา dog">หมา<span class="tone-coming">coming soon</span></button>
+            </div>
+
+          </div>
+          <p class="audio-status" id="toneAudioStatus" role="status" aria-live="polite">
+            🎧 Real recordings are on the way. Tap any button above and it will play once your wife records the audio.
           </p>
         </article>
 
+        <!-- 2. TONES ARE MEANING -->
+        <article class="card glow-cyan">
+          <h3>Tones Are Meaning</h3>
+          <p class="tone-cost">Same sound pattern, different tone = a totally different word. Get the tone wrong and Thais hear the wrong word.</p>
+          <div class="mean-grid">
+            <button type="button" class="mean-card" data-audio-file="ma-dog.mp3" aria-label="หมา means dog">
+              <div>
+                <div class="mean-thai">หมา</div>
+                <span class="mean-tone-tag">rising · mǎa</span>
+              </div>
+              <div>
+                <div class="mean-en">dog</div>
+                <div class="mean-note">măa</div>
+              </div>
+            </button>
+            <button type="button" class="mean-card" data-audio-file="ma-horse.mp3" aria-label="ม้า means horse">
+              <div>
+                <div class="mean-thai">ม้า</div>
+                <span class="mean-tone-tag">falling · máa</span>
+              </div>
+              <div>
+                <div class="mean-en">horse</div>
+                <div class="mean-note">máa</div>
+              </div>
+            </button>
+            <button type="button" class="mean-card" data-audio-file="mai-new.mp3" aria-label="ใหม่ means new">
+              <div>
+                <div class="mean-thai">ใหม่</div>
+                <span class="mean-tone-tag">low · mài</span>
+              </div>
+              <div>
+                <div class="mean-en">new</div>
+                <div class="mean-note">mài</div>
+              </div>
+            </button>
+            <button type="button" class="mean-card" data-audio-file="mai-no.mp3" aria-label="ไม่ means no">
+              <div>
+                <div class="mean-thai">ไม่</div>
+                <span class="mean-tone-tag">falling · mâi</span>
+              </div>
+              <div>
+                <div class="mean-en">no</div>
+                <div class="mean-note">mâi</div>
+              </div>
+            </button>
+          </div>
+          <p class="tone-note">
+            Tip: <strong>หมา</strong> (rising) means <strong>dog</strong>, but <strong>ม้า</strong> (falling) means <strong>horse</strong>!
+            One slip and you're asking to pat a horse instead of a dog.
+          </p>
+        </article>
+
+        <!-- 3. TONE MARKS YOU WILL SEE -->
         <article class="card glow-cyan">
           <h3>Tone Marks You Will See</h3>
+          <p class="tone-cost">These tell your voice where to go — but read the rules below, because the mark alone doesn't always decide the tone.</p>
           <div class="tone-table-wrap">
             <table class="tone-table">
               <thead>
@@ -74,48 +202,99 @@
                   <th>Mark</th>
                   <th>Thai name</th>
                   <th>Symbol</th>
+                  <th>Where it sits</th>
                 </tr>
               </thead>
               <tbody>
-                <tr>
-                  <td>No mark</td>
-                  <td>ไม้สามัญ</td>
-                  <td>-</td>
-                </tr>
-                <tr>
-                  <td>Mai ek</td>
-                  <td>ไม้เอก</td>
-                  <td>่</td>
-                </tr>
-                <tr>
-                  <td>Mai tho</td>
-                  <td>ไม้โท</td>
-                  <td>้</td>
-                </tr>
-                <tr>
-                  <td>Mai tri</td>
-                  <td>ไม้ตรี</td>
-                  <td>๊</td>
-                </tr>
-                <tr>
-                  <td>Mai chattawa</td>
-                  <td>ไม้จัตวา</td>
-                  <td>๋</td>
-                </tr>
+                <tr><td>No mark</td><td>no marker</td><td>—</td><td>often = mid tone</td></tr>
+                <tr><td>Mai ek</td><td>ไม้เอก</td><td>่</td><td>pulls tone low / down</td></tr>
+                <tr><td>Mai tho</td><td>ไม้โท</td><td>้</td><td>pulls tone down then falling</td></tr>
+                <tr><td>Mai tri</td><td>ไม้ตรี</td><td>๊</td><td>raises to a high tone</td></tr>
+                <tr><td>Mai chattawa</td><td>ไม้จัตวา</td><td>๋</td><td>rises upward (question feel)</td></tr>
               </tbody>
             </table>
           </div>
         </article>
 
-        <article class="card glow-lime tone-practice">
-          <h3>Ear Practice</h3>
-          <p>Listen and copy the contour. The goal is to shape the voice clearly, not perfect speed.</p>
-          <button class="speak-btn" data-phrase="มา">Mid sample: มา</button>
-          <button class="speak-btn" data-phrase="หม่า">Low sample: หม่า</button>
-          <button class="speak-btn" data-phrase="ม้า">Falling sample: ม้า</button>
-          <button class="speak-btn" data-phrase="ม๊า">High sample: ม๊า</button>
-          <button class="speak-btn" data-phrase="หมา">Rising sample: หมา</button>
+        <!-- 4. READING RULES -->
+        <article class="card glow-lime tone-visual">
+          <h3>How to Decide the Real Tone (The Part That Tricks Everyone)</h3>
+          <p class="tone-cost">A tone mark is only <em>part</em> of the answer. Follow 3 easy points to get the exact tone every time.</p>
+          <div class="flow">
+            <div class="flow-step">
+              <span class="step-num">POINT 1</span>
+              <h4>Is the consonant high, mid, or low class?</h4>
+              <p>Every Thai consonant belongs to one of three "voice classes". This is the key.</p>
+            </div>
+            <div class="flow-step">
+              <span class="step-num">POINT 2</span>
+              <h4>Is the syllable live or dead?</h4>
+              <p><strong>Live</strong> = long vowel or a smooth final (m, n, ng). <strong>Dead</strong> = short vowel or a hard stop final (p, t, k).</p>
+            </div>
+            <div class="flow-step">
+              <span class="step-num">POINT 3</span>
+              <h4>Is there a tone mark?</h4>
+              <p>No mark? Start from the first column of the table. Mark? Cross-reference your class column. That gives the tone.</p>
+            </div>
+          </div>
+
+          <div class="class-grid">
+            <div class="class-chip">
+              <h5>High class <small>ข ฉ ถ ผ ฝ ศ ษ ส ห</small></h5>
+              <p>No mark on a live syllable → <strong>rising tone</strong>. No mark, dead syllable → <strong>low tone</strong>.</p>
+            </div>
+            <div class="class-chip">
+              <h5>Mid class <small>ก จ ด ต บ ป อ</small></h5>
+              <p>No mark → <strong>mid tone</strong>, whether live or dead. The “safe” default for beginners.</p>
+            </div>
+            <div class="class-chip">
+              <h5>Low class <small>the rest (ค ง ช ญ ฯลฯ)</small></h5>
+              <p>No mark live → <strong>mid tone</strong>. No mark dead → <strong>low tone</strong>. Most common class.</p>
+            </div>
+          </div>
         </article>
+
+        <!-- 5. MASTER LOOKUP TABLE -->
+        <article class="card glow-lime">
+          <h3>Master Tone Table — Marks × Consonant Class</h3>
+          <div class="tone-table-wrap">
+            <table class="tone-table master-table">
+              <thead>
+                <tr>
+                  <th>Consonant</th>
+                  <th>No mark</th>
+                  <th>Mai ek ่</th>
+                  <th>Mai tho ้</th>
+                  <th>Mai tri ๊</th>
+                  <th>Mai chattawa ๋</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr><td><strong>High class</strong></td><td>rising (live) / low (dead)</td><td>low</td><td>falling</td><td>high*</td><td>rising*</td></tr>
+                <tr><td><strong>Mid class</strong></td><td>mid</td><td>low</td><td>falling</td><td>high*</td><td>rising*</td></tr>
+                <tr><td><strong>Low class</strong></td><td>mid (live) / low (dead)</td><td>falling</td><td>high</td><td>high*</td><td>rising*</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <p class="master-note">* Mai tri (๊) and mai chattawa (๋) only ever appear on mid/high consonants, so those cells are examples only. Low-class syllables can’t carry ๊ or ๋ in normal spelling.</p>
+        </article>
+
+        <!-- 6. Ear practice (now MP3-backed) -->
+        <article class="card glow-lime tone-practice">
+          <h3>Ear Practice — same syllable, five tones</h3>
+          <p class="tone-cost">Say the same “ma” five ways by moving only your pitch. One syllable, five meanings, five shapes.</p>
+          <div class="tone-list">
+            <div class="tone-row t-mid"><div class="tone-head"><span class="tone-en">มา</span><span class="tone-th">come (mid)</span></div><button type="button" class="tone-speak" data-audio-file="ma-mid.mp3" aria-label="มา come">🔊 Play</button></div>
+            <div class="tone-row t-low"><div class="tone-head"><span class="tone-en">หม่า</span><span class="tone-th">galangal (low)</span></div><button type="button" class="tone-speak" data-audio-file="ma-low.mp3" aria-label="หม่า">🔊 Play</button></div>
+            <div class="tone-row t-falling"><div class="tone-head"><span class="tone-en">ม้า</span><span class="tone-th">horse (falling)</span></div><button type="button" class="tone-speak" data-audio-file="ma-falling.mp3" aria-label="ม้า horse">🔊 Play</button></div>
+            <div class="tone-row t-high"><div class="tone-head"><span class="tone-en">ม๊า</span><span class="tone-th">rhetorical (high)</span></div><button type="button" class="tone-speak" data-audio-file="ma-high.mp3" aria-label="ม๊า">🔊 Play</button></div>
+            <div class="tone-row t-rising"><div class="tone-head"><span class="tone-en">หมา</span><span class="tone-th">dog (rising)</span></div><button type="button" class="tone-speak" data-audio-file="ma-rising.mp3" aria-label="หมา dog">🔊 Play</button></div>
+          </div>
+          <p class="tone-note">
+            Goal: shape the voice clearly, not perfect speed. Repeat until the rising “ma” (dog) vs falling “ma” (horse) feel obvious.
+          </p>
+        </article>
+
       </section>
     </main>
 
@@ -125,5 +304,6 @@
     </footer>
 
     <script src="../script.js"></script>
+    <script src="../tones.js"></script>
   </body>
 </html>

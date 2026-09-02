@@ -1881,3 +1881,306 @@ main {
     grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
   }
 }
+
+/* --- Tones page (enhanced) --- */
+/* Full-width intro "melody" card */
+.tone-visual {
+  grid-column: 1 / -1;
+}
+
+.tone-cost {
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+/* Rows: one per tone */
+.tone-list {
+  display: grid;
+  gap: 0.7rem;
+  margin-top: 0.7rem;
+}
+
+.tone-row {
+  display: grid;
+  grid-template-columns: 150px 1fr auto;
+  gap: 1rem;
+  align-items: center;
+  padding: 0.7rem 1rem;
+  border: 1px solid var(--card-border);
+  border-left: 4px solid transparent;
+  border-radius: 10px;
+  background: var(--surface-2);
+  transition: border-color 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+}
+
+.tone-row.active {
+  box-shadow: var(--card-shadow);
+  background: var(--surface);
+}
+
+.tone-head {
+  display: flex;
+  flex-direction: column;
+  gap: 0.1rem;
+}
+
+.tone-en {
+  font-weight: 700;
+  font-size: 1rem;
+  color: var(--thai-navy);
+  line-height: 1.2;
+}
+
+.tone-th {
+  font-size: 0.78rem;
+  color: var(--muted);
+  font-style: italic;
+}
+
+/* Colour key per tone (top + border accent) */
+.tone-row.t-mid     { border-left-color: var(--jade); }
+.tone-row.t-low     { border-left-color: var(--thai-navy); }
+.tone-row.t-falling { border-left-color: var(--thai-red); }
+.tone-row.t-high    { border-left-color: var(--gold); }
+.tone-row.t-rising  { border-left-color: var(--thai-navy); }
+
+.pitch-svg {
+  width: 100%;
+  height: 56px;
+  display: block;
+}
+
+.pitch-svg .pitch-line {
+  fill: none;
+  stroke-width: 4;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.pitch-svg .pitch-glow {
+  fill: none;
+  stroke-width: 9;
+  stroke-linecap: round;
+  opacity: 0.18;
+}
+
+.t-mid .pitch-line     { stroke: var(--jade); }
+.t-mid .pitch-glow     { stroke: var(--jade); }
+.t-low .pitch-line     { stroke: var(--thai-navy); }
+.t-low .pitch-glow     { stroke: var(--thai-navy); }
+.t-falling .pitch-line { stroke: var(--thai-red); }
+.t-falling .pitch-glow { stroke: var(--thai-red); }
+.t-high .pitch-line    { stroke: var(--gold); }
+.t-high .pitch-glow    { stroke: var(--gold); }
+.t-rising .pitch-line  { stroke: var(--thai-navy); }
+.t-rising .pitch-glow  { stroke: var(--thai-navy); }
+
+/* Waveform height grid behind the pitch line */
+.tone-row .pitch-wrap {
+  position: relative;
+}
+
+/* Audio button for a tone example */
+.tone-speak {
+  border: 1px solid var(--thai-navy);
+  background: var(--surface);
+  color: var(--thai-navy);
+  padding: 0.55rem 0.9rem;
+  border-radius: 999px;
+  cursor: pointer;
+  font-family: inherit;
+  font-weight: 700;
+  transition: 0.2s ease;
+  white-space: nowrap;
+}
+
+.tone-speak:hover {
+  background: var(--thai-navy);
+  color: #ffffff;
+}
+
+.tone-row.active .tone-speak {
+  background: var(--thai-navy);
+  color: #ffffff;
+}
+
+.the-char {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--thai-red);
+  margin-right: 0.4rem;
+  line-height: 1;
+}
+
+/* Shared audio-status pill at the bottom of the tone trainer */
+.audio-status {
+  grid-column: 1 / -1;
+  margin-top: 0.6rem;
+  padding: 0.6rem 0.85rem;
+  border-radius: 9px;
+  border: 1px dashed var(--card-border);
+  background: var(--surface);
+  color: var(--muted);
+  font-style: italic;
+  font-size: 0.9rem;
+}
+
+/* Tone-rules step flow (used for the reading-rules card) */
+.flow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  align-items: stretch;
+  margin-top: 0.5rem;
+}
+
+.flow-step {
+  flex: 1 1 160px;
+  border: 1px solid var(--card-border);
+  border-top: 3px solid var(--thai-navy);
+  background: var(--surface-2);
+  border-radius: 9px;
+  padding: 0.7rem 0.8rem;
+}
+
+.flow-step .step-num {
+  color: var(--thai-red);
+  font-family: "Orbitron", sans-serif;
+  font-weight: 700;
+  font-size: 0.8rem;
+}
+
+.flow-step h4 {
+  margin: 0.3rem 0 0.2rem;
+  font-size: 0.92rem;
+  color: var(--thai-navy);
+}
+
+.flow-step p {
+  margin: 0;
+  font-size: 0.83rem;
+  color: var(--text);
+  line-height: 1.45;
+}
+.flow-step em { color: var(--thai-red); font-style: normal; font-weight: 700; }
+
+/* Consonant-class summary tiles */
+.class-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 0.7rem;
+  margin-top: 0.5rem;
+}
+
+.class-chip {
+  border: 1px solid var(--card-border);
+  border-left: 4px solid var(--gold);
+  border-radius: 9px;
+  padding: 0.7rem 0.8rem;
+  background: var(--surface);
+}
+
+.class-chip h5 {
+  margin: 0 0 0.3rem;
+  font-size: 0.9rem;
+  color: var(--thai-red);
+}
+.class-chip h5 small {
+  color: var(--muted);
+  font-weight: 600;
+  font-family: "Space Grotesk", sans-serif;
+}
+
+.class-chip p {
+  margin: 0;
+  font-size: 0.83rem;
+  line-height: 1.45;
+  color: var(--text);
+}
+
+/* Master lookup table */
+.master-note {
+  margin-top: 0.7rem;
+  font-size: 0.82rem;
+  color: var(--muted);
+}
+
+/* Minimal-pair "meaning" cards */
+.mean-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 0.8rem;
+  margin-top: 0.6rem;
+}
+
+.mean-card {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  padding: 0.8rem;
+  border: 1px solid var(--card-border);
+  border-left: 4px solid var(--jade);
+  border-radius: 10px;
+  background: var(--surface-2);
+  cursor: pointer;
+  transition: 0.15s ease;
+}
+.mean-card:hover { border-left-color: var(--thai-navy); }
+
+.mean-thai {
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: var(--thai-navy);
+  line-height: 1;
+}
+
+.mean-tone-tag {
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+  color: var(--muted);
+  display: block;
+  margin-top: 0.15rem;
+}
+.mean-card[data-ttag="falling"] .mean-tplus { color: var(--thai-red); }
+
+.mean-en {
+  font-weight: 700;
+  color: var(--text);
+  font-size: 0.98rem;
+}
+.mean-note {
+  font-size: 0.78rem;
+  color: var(--muted);
+}
+
+/* Coming-soon badge used until real audio is added */
+.tone-coming {
+  display: inline-block;
+  margin-left: 0.7rem;
+  font-size: 0.74rem;
+  font-weight: 700;
+  color: var(--thai-red);
+  border: 1px dashed var(--thai-red);
+  border-radius: 999px;
+  padding: 0.18rem 0.55rem;
+  letter-spacing: 0.2px;
+  vertical-align: middle;
+  white-space: nowrap;
+}
+
+/* responsive: squash tone rows nicely on small screens */
+@media (max-width: 880px) {
+  .tones-grid { grid-template-columns: 1fr; }
+  .tone-row {
+    grid-template-columns: 1fr auto;
+    gap: 0.4rem 0.8rem;
+  }
+  .tone-row .pitch-svg { grid-column: 1 / -1; grid-row: 1; }
+  .tone-head { grid-column: 1 / -1; }
+}
